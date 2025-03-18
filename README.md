@@ -10,19 +10,30 @@
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 [![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/mskcc/svtorm)
 
+## Pipeline Overview
+
+![Pipeline Steps](assets/SVtorm.svg)
+
 ## Introduction
 
-**mskcc/svtorm** is a bioinformatics pipeline that ...
+**mskcc/svtorm** is a bioinformatics pipeline that calls structural variants from target sequenced data.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+![Pipeline Steps](assets/SVtorm.svg)
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+0. Starts with a pre-made BAM file.
+1. Calling SVs
+   - ([`Delly`](https://github.com/dellytools/delly))
+   - ([`Svaba`](https://github.com/walaj/svaba))
+   - ([`Manta`](https://github.com/Illumina/manta))
+   - ([`Gridss`](https://github.com/PapenfussLab/gridss))
+2. Merging Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
+3. Bed to Interval list ([`GATK`](https://gatk.broadinstitute.org/hc/en-us/articles/360035531852-Intervals-and-interval-lists))
+4. ReCalling ([`Gridss`](https://github.com/PapenfussLab/gridss))
+5. Filtering Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
+6. Annotate SVs ([`iAnnotateSV`](https://github.com/mskcc/iAnnotateSV))
+7. Draw SVs ([`DrawSV`](https://github.com/jblancoheredia/DrawSV))
+8. Check for expected SVs in Controls 
+9. Present QC for raw reads ([`MultiQC`](http://multiqc.info/)) 
 
 ## Usage
 
