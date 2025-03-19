@@ -68,11 +68,12 @@ nextflow run mskcc/svtorm \
 
 ## Credits
 
-mskcc/svtorm was originally written by blancoj@mskcc.org.
+mskcc/svtorm was originally written by Juan Blanco-Heredia <blancoj@mskcc.org>
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+Kanika Arora   <AroraK@mskcc.org>
+Shivani Guturu <guturus1@mskcc.org>
 
 ## Contributions and Support
 

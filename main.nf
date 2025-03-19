@@ -35,9 +35,9 @@ include { SVTORM                                                                
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { PIPELINE_INITIALISATION                                                           } from './subworkflows/local/utils_nfcore_svtorm_pipeline'
-include { PIPELINE_COMPLETION                                                               } from './subworkflows/local/utils_nfcore_svtorm_pipeline'
 include { getGenomeAttribute                                                                } from './subworkflows/local/utils_nfcore_svtorm_pipeline'
+include { PIPELINE_COMPLETION                                                               } from './subworkflows/local/utils_nfcore_svtorm_pipeline'
+include { PIPELINE_INITIALISATION                                                           } from './subworkflows/local/utils_nfcore_svtorm_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,7 +62,7 @@ workflow MSKCC_SVTORM {
         samplesheet
     )
     emit:
-    multiqc_report = SVTORM.out.multiqc_report // channel: /path/to/multiqc_report.html
+    multiqc_report = SVTORM.out.multiqc_report // channel: /path/to/multiqc_report.html TO-DO: buehlere@mskcc.org necesary or can it be supressed?
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
