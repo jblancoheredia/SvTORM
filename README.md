@@ -73,6 +73,9 @@ mskcc/svtorm was originally written by Juan Blanco-Heredia <blancoj@mskcc.org>
 We thank the following people for their extensive assistance in the development of this pipeline:
 
 Kanika Arora   <AroraK@mskcc.org>
+
+&
+
 Shivani Guturu <guturus1@mskcc.org>
 
 ## Contributions and Support
