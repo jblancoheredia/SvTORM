@@ -51,7 +51,7 @@ include { PIPELINE_INITIALISATION                                               
 workflow MSKCC_SVTORM {
 
     take:
-    samplesheet // channel: samplesheet TO-DO: buehlere@mskcc.org would it be possible to take Nucleo's samplesheet?
+    samplesheet
 
     main:
 
@@ -64,6 +64,7 @@ workflow MSKCC_SVTORM {
     emit:
     multiqc_report = SVTORM.out.multiqc_report // channel: /path/to/multiqc_report.html TO-DO: buehlere@mskcc.org necesary or can it be supressed?
 }
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                                                   RUN MAIN WORKFLOW
