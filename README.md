@@ -18,8 +18,8 @@
 ## Introduction
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/SVtorm_dark.svg">
-  <img alt="Metro" src="assets/SVtorm_light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/SVtorm_metro_dark.svg">
+  <img alt="Metro" src="assets/SVtorm_metro_light.svg">
 </picture>
 
 **mskcc/svtorm** is a bioinformatics pipeline that calls structural variants from target sequenced data.
