@@ -27,7 +27,8 @@ process DRAWSV {
     """
     python PRE_DRAW_SV.py \\
         ${prefix} \\
-        --suffix "_SOMTIC_SV_OUT.tsv" \\
+        --input ${tsv} \\
+        --annotations ${gtf} \\
         ${args}
 
     Rscript DrawSVs.R \\
@@ -45,12 +46,10 @@ process DRAWSV {
         drawsv: \$(samtools --version |& sed '1!d ; s/samtools //')
     END_VERSIONS
     """
-
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.bam
+    touch ${prefix}_DrawSVs.pdf
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

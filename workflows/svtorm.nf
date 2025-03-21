@@ -65,7 +65,7 @@ workflow SVTORM {
     //
     // MODULE: Run Manta in Somatic Mode
     //
-    ch_final_input = ch_normal_bam
+    ch_manta_input = ch_normal_bam
         .combine(ch_normal_bai)
         .combine(ch_bam)
         .combine(ch_bai)
@@ -74,7 +74,7 @@ workflow SVTORM {
         .map { normal_bam, normal_bai, tumor_bam, tumor_bai, target_bed, target_bed_tbi -> 
             tuple(normal_bam[0], normal_bam[1], normal_bai[1], tumor_bam[1], tumor_bai[1], target_bed[1], target_bed_tbi[1])
         }
-    MANTA_SOMATIC(ch_bam, ch_intervals_gunzip, ch_intervals_gunzip_index, ch_fasta, ch_fai, [])
+    MANTA_SOMATIC(ch_manta_input, ch_fasta, ch_fai, [])
     ch_versions = ch_versions.mix(MANTA_SOMATIC.out.versions)
     ch_manta_vcf = MANTA_SOMATIC.out.vcf
 
@@ -134,21 +134,20 @@ workflow SVTORM {
     //
     IANNOTATESV(ch_delly_vcf, ch_svaba_vcf, ch_manta_vcf, ch_gridss_vcf, ch_recall_vcf, 1000, 3, 0, 0, 0, 1000)
     ch_versions = ch_versions.mix(IANNOTATESV.out.versions)
-    ch_filtered_vcf = IANNOTATESV.out.filtered_vcf
+    ch_annotated_tsv = IANNOTATESV.out.tsv
 
     //
     // MODULE: Run DrawSV
     //
-    DRAWSV(ch_delly_vcf, ch_svaba_vcf, ch_manta_vcf, ch_gridss_vcf, ch_recall_vcf, 1000, 3, 0, 0, 0, 1000)
+    DRAWSV(ch_bam, ch_annotated_tsv, params.annotations, params.cytobands, params.protein_domains)
     ch_versions = ch_versions.mix(DRAWSV.out.versions)
-    ch_filtered_vcf = DRAWSV.out.filtered_vcf
+    ch_drawsv_pdf = DRAWSV.out.pdf
 
     //
     // MODULE: Run Check-Up and Clean-Up
     //
-    CHECKUPNCLEANUP(ch_delly_vcf, ch_svaba_vcf, ch_manta_vcf, ch_gridss_vcf, ch_recall_vcf, 1000, 3, 0, 0, 0, 1000)
+    CHECKUPNCLEANUP(ch_annotated_tsv)
     ch_versions = ch_versions.mix(CHECKUPNCLEANUP.out.versions)
-    ch_filtered_vcf = CHECKUPNCLEANUP.out.filtered_vcf
 
     //
     // Collate and save software versions
@@ -201,8 +200,9 @@ workflow SVTORM {
         []
     )
 
-    emit:multiqc_report = MULTIQC.out.report.toList()
+    emit:
     versions       = ch_versions
+    multiqc_report = MULTIQC.out.report.toList()
 
 }
 

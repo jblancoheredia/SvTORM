@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+# coding: utf-8
+
+import os
+import re
+import pandas as pd
+import argparse
+
+def remove_chr(contig):
+    return contig.replace("chr", "")
+
+def parse_gtf_attribute(attribute, gtf):
+    if attribute == "exon_number":
+        attribute_pattern = rf'{attribute} (\d+)'
+    else:
+        attribute_pattern = rf'{attribute} \"([^\"]+)\"'
+    parsed = gtf["attributes"].apply(lambda x: re.search(attribute_pattern, x).group(1) if re.search(attribute_pattern, x) else "")
+    failed_to_parse = parsed == ""
+    if any(failed_to_parse):
+        print(f"Failed to parse '{attribute}' attribute of {sum(failed_to_parse)} record(s).")
+    return parsed
+
+def read_annotations(ref_genome, annotation_gtf):
+    print("Loading annotation for genome:", ref_genome)
+    exons = pd.read_csv(annotation_gtf, sep="\t", comment="#", quotechar='"',
+                         names=["contig", "src", "type", "start", "end", "score",
+                                "strand", "frame", "attributes"], low_memory=False)
+    exons = exons[exons["type"].isin(["CDS"])]
+    exons = exons[["contig", "type", "start", "end", "strand", "attributes"]]
+    exons["geneID"] = parse_gtf_attribute("gene_id", exons)
+    exons["geneName"] = parse_gtf_attribute("gene_name", exons)
+    exons["transcript"] = parse_gtf_attribute("transcript_id", exons)
+    exons["exonNumber"] = parse_gtf_attribute("exon_number", exons)
+    exons.drop(["attributes"], axis=1, inplace=True)
+    exons.drop_duplicates(inplace=True, ignore_index=True)
+    return exons
+
+def query_annotations(annotations, contig, position):
+    filtered_annotations = annotations[(annotations['contig'] == str(contig)) & 
+                                       (annotations['start'] <= position) & 
+                                       (annotations['end'] >= position)].copy()
+    if not filtered_annotations.empty:
+        filtered_annotations['distance'] = 0
+        return filtered_annotations[['geneID', 'geneName', 'transcript', 'exonNumber', 'distance']].reset_index(drop=True)
+    else:
+        annotations_contig = annotations[annotations['contig'] == str(contig)].copy()
+        if annotations_contig.empty:
+            return None
+        annotations_contig['distance'] = annotations_contig.apply(lambda x: min(abs(x['start'] - position), abs(x['end'] - position)), axis=1)
+        closest_records = annotations_contig.nsmallest(1, 'distance')
+        return closest_records[['geneID', 'geneName', 'transcript', 'exonNumber', 'distance']].reset_index(drop=True)
+
+def process_sv_data(sample, input_file, ref_genome, annotation_gtf):
+    annotations = read_annotations(ref_genome, annotation_gtf)
+    print(f"Processing sample: {sample}")
+    
+    sv_data = pd.read_csv(input_file, sep="\t")
+
+    output_file1 = f"{sample}_DrawSVs.tsv"
+    output_file2 = f"{sample}_links.csv"
+
+    output_data = []
+    output_links = []
+
+    for _, row in sv_data.iterrows():
+        sv_info = {
+            "SV_BC": row['SV_BC'],
+            "gene1": row['gene1'],
+            "gene2": row['gene2'],
+            "strand1(gene/fusion)": {'++': '+/+', '--': '-/-', '+-': '+/+', '-+': '-/-'}.get(row['STRANDS'], '.'),
+            "strand2(gene/fusion)": {'++': '+/+', '--': '-/-', '+-': '-/-', '-+': '+/+'}.get(row['STRANDS'], '.'),
+            "Breakpoint1": f"{row['CHR']}:{row['POS']}",
+            "Breakpoint2": f"{row['CHR2']}:{row['END']}",
+            "site1": row['site1'],
+            "site2": row['site2'],
+            "type": {"TRA": "Translocation", "DUP": "Duplication", "INV": "Inversion", "DEL": "Deletion"}.get(row['SVTYPE'], '.'),
+            "split_reads1": ".",
+            "split_reads2": ".",
+            "discordant_mates": ".",
+            "coverage1": ".",
+            "coverage2": ".",
+            "confidence": "High",
+            "tags": ".",
+            "retained_protein_domains": ".",
+            "closest_genomic_breakpoint1": ".",
+            "closest_genomic_breakpoint2": ".",
+            "gene_id1": ".",
+            "gene_id2": ".",
+            "transcript_id1": ".",
+            "transcript_id2": ".",
+            "direction1": {'++': 'downstream', '--': 'upstream', '+-': 'downstream', '-+': 'upstream'}.get(row['STRANDS'], '.'),
+            "direction2": {'++': 'downstream', '--': 'upstream', '+-': 'upstream', '-+': 'downstream'}.get(row['STRANDS'], '.'),
+            "filters": "PASS",
+            "fusion_transcript": ".",
+            "peptide_sequence": ".",
+            "read_identifiers": "."
+        }
+
+        atr1 = query_annotations(annotations, row['CHR'], row['POS'])
+        if atr1 is not None:
+            sv_info["closest_genomic_breakpoint1"] = f"exon {atr1['exonNumber'][0]} {atr1['distance'][0]}bp away"
+            sv_info["gene_id1"] = atr1['geneID'][0]
+            sv_info["transcript_id1"] = atr1['transcript'][0]
+        
+        atr2 = query_annotations(annotations, row['CHR2'], row['END'])
+        if atr2 is not None:
+            sv_info["closest_genomic_breakpoint2"] = f"exon {atr2['exonNumber'][0]} {atr2['distance'][0]}bp away"
+            sv_info["gene_id2"] = atr2['geneID'][0]
+            sv_info["transcript_id2"] = atr2['transcript'][0]
+
+        sv_info["reading_frame"] = "out-of-frame" if (atr1 is None or atr1['distance'][0] != 0) or (atr2 is None or atr2['distance'][0] != 0) else "in-frame"
+
+        output_data.append(sv_info)
+        
+        output_links.append({
+            "chr1": row['CHR'],
+            "start1": row['POS'],
+            "end1": row['POS'] + 1 + abs(row['SVLEN']),
+            "chr2": row['CHR2'],
+            "start2": row['END'],
+            "end2": row['END'] + 1 + abs(row['SVLEN']),
+            "type": sv_info["type"]
+        })
+
+    pd.DataFrame(output_data).to_csv(output_file1, sep="\t", index=False)
+    pd.DataFrame(output_links).to_csv(output_file2, index=False)
+
+    print(f"Output written to: {output_file1} and {output_file2}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process structural variant files and generate output.")
+    parser.add_argument("sample", help="Sample ID")
+    parser.add_argument("--input", help="Input file")
+    parser.add_argument("--genome", default="hg38", help="Reference genome")
+    parser.add_argument("--annotations", help="Genome corresponding annotation GTF file")
+    args = parser.parse_args()
+
+    process_sv_data(args.sample, args.input, args.genome, args.annotations)
