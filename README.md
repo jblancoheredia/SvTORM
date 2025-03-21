@@ -26,9 +26,9 @@
 
 **mskcc/svtorm** is a bioinformatics pipeline that calls structural variants from target sequenced data.
 
-![Pipeline Steps](assets/SVtorm.svg)
+## Pipeline Steps
 
-0. Starts with a pre-made BAM file.
+0. SVtorm starts with a couple of BAM files per sample, one for tumour and one for normal.
 1. Calling SVs
    - ([`Delly`](https://github.com/dellytools/delly))
    - ([`Svaba`](https://github.com/walaj/svaba))
@@ -48,31 +48,24 @@
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
-
 First, prepare a samplesheet with your input data that looks as follows:
 
 `samplesheet.csv`:
 
 ```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+sample,bam_n,bam_t,panel,genome,paired
+SAMPLE,/path/to/normal/bam/file/SAMPLE_NORMAL.bam,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bam,Av2,GRCh38,TRUE
 ```
-
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
-
--->
+Each row represents a sample with a pair of BAM files, tumour and normal (somatic calling), the target panel for the sequencing, the genome reference used during the BAM aligment and if the data is pair-end.
 
 Now, you can run the pipeline using:
 
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
-
 ```bash
-nextflow run mskcc/svtorm \
+nextflow run mskcc/svtorm/main \
    -profile <docker/singularity/.../institute> \
    --input samplesheet.csv \
-   --outdir <OUTDIR>
+   --outdir ../03_outs/ \
+   --workdir ../05_work/ \
 ```
 
 > [!WARNING]
@@ -96,9 +89,6 @@ We thank the following people for their extensive assistance in the development 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
 
 ## Citations
-
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use mskcc/svtorm for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
