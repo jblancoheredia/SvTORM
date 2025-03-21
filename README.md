@@ -1,5 +1,3 @@
-# mskcc/svtorm
-
 <h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/SVtorm_logo_dark.svg">
