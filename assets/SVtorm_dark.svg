@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 600 250">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3, .st4 {
+        stroke-miterlimit: 10;
+      }
+
+      .st0, .st5, .st6 {
+        fill: #60f;
+      }
+
+      .st0, .st5, .st2, .st3, .st4 {
+        stroke: #60f;
+      }
+
+      .st0, .st2, .st4 {
+        stroke-width: 6px;
+      }
+
+      .st7 {
+        fill: #1f1d1d;
+      }
+
+      .st7, .st8, .st9 {
+        stroke: #000;
+      }
+
+      .st10 {
+        font-family: MavenPro-Regular, 'Maven Pro';
+      }
+
+      .st10, .st11, .st12, .st13, .st14, .st6 {
+        isolation: isolate;
+      }
+
+      .st10, .st15, .st13, .st14 {
+        fill: #fafafa;
+      }
+
+      .st10, .st12, .st13 {
+        font-size: 12px;
+      }
+
+      .st1 {
+        stroke: #1f1d1d;
+      }
+
+      .st1, .st8, .st12 {
+        fill: #fff;
+      }
+
+      .st9 {
+        fill: #39383a;
+      }
+
+      .st12 {
+        font-family: Helvetica, Helvetica;
+      }
+
+      .st13 {
+        font-family: MavenPro-SemiBold, 'Maven Pro';
+        font-weight: 600;
+      }
+
+      .st16 {
+        stroke-width: 1.2px;
+      }
+
+      .st16, .st2, .st3, .st17, .st4 {
+        fill: none;
+      }
+
+      .st16, .st17 {
+        stroke: #fff;
+      }
+
+      .st14, .st6 {
+        font-family: MavenPro-Bold, 'Maven Pro';
+        font-size: 50px;
+        font-weight: 700;
+      }
+
+      .st2 {
+        stroke-dasharray: 5.22 5.22;
+      }
+
+      .st3 {
+        stroke-width: 6.4px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" inkscape:version="1.4 (e7c3feb1, 2024-10-09)" sodipodi:docname="SVtorm.svg">
+    <sodipodi:namedview id="namedview56" bordercolor="#cccccc" borderopacity="1" inkscape:current-layer="g9" inkscape:cx="290.23747" inkscape:cy="128.75989" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="1" inkscape:showpageshadow="0" inkscape:window-height="1283" inkscape:window-maximized="0" inkscape:window-width="3184" inkscape:window-x="1196" inkscape:window-y="25" inkscape:zoom="3.79" pagecolor="#ffffff"/>
+    <path id="path1" class="st16" d="M171.83,166.31h362.35"/>
+    <path id="path56" class="st17" d="M51.61,166.6l37.04.21.86-21.41,81.8.21.64,21.41" sodipodi:nodetypes="ccccc"/>
+    <path id="path56-9-0-1" class="st17" d="M51.3,167.06l37.69-.43-.21,20.13,82.44-.43.43-19.49" inkscape:label="path59" sodipodi:nodetypes="ccccc"/>
+    <path id="path56-9-0" class="st17" d="M171.76,166.61l-.33,61.73-82.11-.06-.31-61.28-59.55.04" inkscape:label="path58" sodipodi:nodetypes="ccccc"/>
+    <path id="path56-9" class="st17" d="M171.68,166.6l-.43-62.31-82.01-.21-.1,63.31-59.9-.46" inkscape:label="path57" sodipodi:nodetypes="ccccc"/>
+    <g id="g2" class="st11">
+      <g id="text1" class="st11">
+        <text class="st6" transform="translate(10.5 48.85)"><tspan x="0" y="0">SV</tspan></text>
+      </g>
+      <g id="text2" class="st11">
+        <text class="st14" transform="translate(74.8 48.85)"><tspan x="0" y="0">torm</tspan></text>
+      </g>
+    </g>
+    <g id="g3">
+      <polyline id="polyline2" class="st4" points="443.78 164.07 443.78 166.56 443.78 164.07"/>
+      <line id="line2" class="st2" x1="443.78" y1="158.87" x2="443.78" y2="109.46"/>
+      <polyline id="polyline3" class="st4" points="443.78 106.86 443.78 104.37 443.78 106.86"/>
+      <line id="line3" class="st2" x1="443.78" y1="112.06" x2="443.78" y2="161.47"/>
+    </g>
+    <path id="path8" class="st4" d="M497.44,166.56H171.63h325.81Z"/>
+    <g id="g11" class="st11">
+      <g id="text10" class="st11">
+        <text class="st13" transform="translate(187.38 131.12)"><tspan x="0" y="0">Survivor</tspan></text>
+      </g>
+      <g id="text11" class="st11">
+        <text class="st10" transform="translate(194.8 145.52)"><tspan x="0" y="0">Merge</tspan></text>
+      </g>
+    </g>
+    <g id="g13" class="st11">
+      <g id="text12" class="st11">
+        <text class="st13" transform="translate(282.76 133.32)"><tspan x="0" y="0">ReCall</tspan></text>
+      </g>
+      <g id="text13" class="st11">
+        <text class="st10" transform="translate(283.88 147.72)"><tspan x="0" y="0">Gridss</tspan></text>
+      </g>
+    </g>
+    <g id="g13-7" class="st11">
+      <g id="text12-1" class="st11">
+        <text class="st13" transform="translate(234.8 195.98)"><tspan x="0" y="0">GATK4</tspan></text>
+      </g>
+      <g id="text13-8" class="st11">
+        <text class="st10" transform="translate(218.51 209.06)"><tspan x="0" y="0">bed2intervals</tspan></text>
+      </g>
+    </g>
+    <g id="g15" class="st11">
+      <g id="text14" class="st11">
+        <text class="st13" transform="translate(320.89 196.03)"><tspan x="0" y="0">Survivor</tspan></text>
+      </g>
+      <g id="text15" class="st11">
+        <text class="st10" transform="translate(323.2 210.43)"><tspan x="0" y="0">Filtering</tspan></text>
+      </g>
+    </g>
+    <g id="g16" class="st11">
+      <g id="text16" class="st11">
+        <text class="st13" transform="translate(116.19 86.88)"><tspan x="0" y="0">Delly</tspan></text>
+      </g>
+    </g>
+    <g id="g17" class="st11">
+      <g id="text17" class="st11">
+        <text class="st13" transform="translate(112.78 128.35)"><tspan x="0" y="0">Gridss</tspan></text>
+      </g>
+    </g>
+    <g id="g18" class="st11">
+      <g id="text18" class="st11">
+        <text class="st13" transform="translate(113.1 211.28)"><tspan x="0" y="0">Svaba</tspan></text>
+      </g>
+    </g>
+    <g id="g19" class="st11">
+      <g id="text19" class="st11">
+        <text class="st13" transform="translate(112.63 169.81)"><tspan x="0" y="0">Manta</tspan></text>
+      </g>
+    </g>
+    <path id="path19" class="st4" d="M89.16,203.91v24.36c0,.25.67.46,1.49.46h79.48c.83,0,1.5-.21,1.5-.46v-24.36"/>
+    <path id="path21" class="st4" d="M89.23,147.73v-43.3c0-.45.67-.81,1.49-.81h79.35c.83,0,1.5.36,1.5.81v43.29"/>
+    <path id="path23" class="st4" d="M89.16,186.73v-40.48c0-.42.67-.76,1.49-.76h79.48c.83,0,1.5.34,1.5.76v40.47" sodipodi:nodetypes="cssssc"/>
+    <path id="path25" class="st4" d="M89.16,211.41v-24.36c0-.25.67-.46,1.49-.46h79.48c.83,0,1.5.21,1.5.46v24.36"/>
+    <g id="g28">
+      <path id="path27" class="st0" d="M534.28,166.56h-36.83,36.83Z"/>
+      <polygon id="polygon27" class="st5" points="522.69 156.39 532.87 166.56 522.69 176.74 531.32 176.74 541.5 166.56 531.32 156.39 522.69 156.39"/>
+    </g>
+    <g id="g33">
+      <g id="g31">
+        <rect id="rect28" class="st8" x="423.54" y="43.81" width="38.1" height="47.62"/>
+        <rect id="rect29" class="st9" x="421.16" y="62.85" width="42.86" height="19.05"/>
+        <rect id="rect30" class="st8" x="425.92" y="46.19" width="38.1" height="47.62"/>
+        <rect id="rect31" class="st7" x="423.54" y="65.23" width="42.86" height="19.05"/>
+      </g>
+      <g id="g32" class="st11">
+        <g id="text31" class="st11">
+          <text class="st12" transform="translate(438.43 78.31)"><tspan x="0" y="0">pdf</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="g34" class="st11">
+      <g id="text34" class="st11">
+        <text class="st13" transform="translate(357.9 147.7)"><tspan x="0" y="0">iAnnotateSV</tspan></text>
+      </g>
+    </g>
+    <g id="g49">
+      <g id="g47">
+        <rect id="rect44" class="st8" x="552.13" y="141.56" width="38.1" height="47.62"/>
+        <rect id="rect45" class="st9" x="549.75" y="160.61" width="42.86" height="19.05"/>
+        <rect id="rect46" class="st8" x="554.51" y="143.94" width="38.1" height="47.62"/>
+        <rect id="rect47" class="st7" x="552.13" y="162.99" width="42.86" height="19.05"/>
+      </g>
+      <g id="g48" class="st11">
+        <g id="text47" class="st11">
+          <text class="st12" transform="translate(567.02 176.06)"><tspan x="0" y="0">tsv</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="g50" class="st11">
+      <g id="text49" class="st11">
+        <text class="st13" transform="translate(420.9 195.99)"><tspan x="0" y="0">DrawSV</tspan></text>
+      </g>
+    </g>
+    <g id="g52" class="st11">
+      <g id="g9">
+        <g id="text51" class="st11">
+          <text class="st13" transform="translate(463 145.6)"><tspan x="0" y="0">Check-Up</tspan></text>
+        </g>
+      </g>
+    </g>
+    <polygon id="polygon53" class="st5" points="433.61 116.07 443.78 105.89 453.96 116.07 453.96 107.43 443.78 97.26 433.61 107.43 433.61 116.07"/>
+    <circle id="circle57" class="st15" cx="0" cy="-.63" r="3.1">
+      <animateMotion accumulate="none" additive="replace" begin="0s" calcMode="paced" dur="3s" fill="remove" keyPoints="1;0" keyTimes="0;1" repeatCount="indefinite" restart="always">
+        <mpath href="#path56-9"/>
+      </animateMotion>
+    </circle>
+    <circle id="circle58" class="st15" cx="0" cy="-.63" r="3.1">
+      <animateMotion accumulate="none" additive="replace" begin="0s" calcMode="paced" dur="3s" fill="remove" keyPoints="1;0" keyTimes="0;1" repeatCount="indefinite" restart="always">
+        <mpath href="#path56-9-0"/>
+      </animateMotion>
+    </circle>
+    <path id="path2" class="st3" d="M89.16,166.56h-45.8,45.8" sodipodi:nodetypes="ccc"/>
+    <g id="g39">
+      <g id="g37">
+        <rect id="rect34" class="st8" x="8.12" y="141.26" width="38.1" height="47.62"/>
+        <rect id="rect35" class="st9" x="5.74" y="160.31" width="42.86" height="19.05"/>
+        <rect id="rect36" class="st8" x="10.5" y="143.64" width="38.1" height="47.62"/>
+        <rect id="rect37" class="st7" x="8.12" y="162.69" width="42.86" height="19.05"/>
+      </g>
+      <g id="g38" class="st11">
+        <g id="text37" class="st11">
+          <text class="st12" transform="translate(18.01 175.76)"><tspan x="0" y="0">bam</tspan></text>
+        </g>
+      </g>
+    </g>
+    <circle id="circle56" class="st15" cx="0" cy="-.63" r="3.44">
+      <animateMotion accumulate="none" additive="replace" begin="0s" calcMode="paced" dur="3s" fill="remove" keyPoints="0;1" keyTimes="0;1" repeatCount="indefinite" restart="always">
+        <mpath href="#path56"/>
+      </animateMotion>
+    </circle>
+    <circle id="circle59" class="st15" cx="0" cy="-.63" r="3.44">
+      <animateMotion accumulate="none" additive="replace" begin="0s" calcMode="paced" dur="3s" fill="remove" keyPoints="0;1" keyTimes="0;1" repeatCount="indefinite" restart="always">
+        <mpath href="#path56-9-0-1"/>
+      </animateMotion>
+    </circle>
+    <circle id="circle55" class="st15" cx="0" cy="-.63" r="3.44">
+      <animateMotion accumulate="none" additive="replace" begin="3s" calcMode="paced" dur="3s" fill="remove" keyPoints="0;1" keyTimes="0;1" repeatCount="indefinite" restart="always">
+        <mpath href="#path1"/>
+      </animateMotion>
+    </circle>
+    <path id="path22" class="st1" d="M130.39,95.99h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path24" class="st1" d="M130.39,137.99h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path26" class="st1" d="M130.39,179.09h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path20" class="st1" d="M130.39,221.23h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path33" class="st1" d="M211.75,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path11" class="st1" d="M255.56,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path9" class="st1" d="M300.62,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path10" class="st1" d="M345.25,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path34" class="st1" d="M393.69,159.46h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path49" class="st1" d="M443.78,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+    <path id="path28" class="st1" d="M490.74,159.06h0c4.14,0,7.5,3.36,7.5,7.5h0c0,4.14-3.36,7.5-7.5,7.5h0c-4.14,0-7.5-3.36-7.5-7.5h0c0-4.14,3.36-7.5,7.5-7.5Z"/>
+  </g>
+</svg>

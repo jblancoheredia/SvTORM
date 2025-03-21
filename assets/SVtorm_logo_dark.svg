@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1456.78 522.44">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-family: MavenPro-Bold, 'Maven Pro';
+        font-size: 209.87px;
+        font-weight: 700;
+      }
+
+      .st0, .st1 {
+        isolation: isolate;
+      }
+
+      .st2 {
+        fill: url(#linear-gradient);
+      }
+
+      .st3 {
+        fill: #24af63;
+      }
+
+      .st4 {
+        fill: #fafafa;
+      }
+
+      .st5 {
+        fill: #60f;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="397.13" y1="384.37" x2="400.1" y2="384.37" gradientTransform="translate(10650.95 -24449.25) rotate(156) scale(48.14 -48.14)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0c542a"/>
+      <stop offset=".49" stop-color="#0c542a"/>
+      <stop offset=".73" stop-color="#25af64"/>
+      <stop offset=".9" stop-color="#25af64"/>
+      <stop offset="1" stop-color="#25af64"/>
+    </linearGradient>
+  </defs>
+  <g id="text53" class="st1">
+    <text class="st0" transform="translate(-8.13 325.28)"><tspan class="st3" x="0" y="0">mskcc/</tspan><tspan class="st5" x="720.89" y="0">SV</tspan><tspan class="st4" x="990.78" y="0">torm</tspan></text>
+  </g>
+  <path id="path67" class="st2" d="M628.39,345.85l54.78-179.23-77.02,179.23h22.25Z"/>
+</svg>
