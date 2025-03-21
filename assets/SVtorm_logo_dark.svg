@@ -4,54 +4,56 @@
   <defs>
     <style>
       .st0 {
-        fill: #002569;
+        fill: #60f;
       }
 
-      .st0, .st1, .st2, .st3, .st4 {
+      .st0, .st1, .st2, .st3 {
         isolation: isolate;
       }
 
-      .st0, .st1, .st2, .st4 {
+      .st0, .st1, .st3 {
         font-family: MavenPro-Bold, 'Maven Pro';
         font-size: 209.87px;
         font-weight: 700;
       }
 
       .st1 {
-        fill: #60f;
-      }
-
-      .st2 {
         fill: #0073e0;
       }
 
-      .st5 {
+      .st4 {
         fill: url(#linear-gradient);
       }
 
-      .st4 {
+      .st3 {
         fill: #fafafa;
       }
     </style>
-    <linearGradient id="linear-gradient" x1="1266.98" y1="372.03" x2="1269.95" y2="372.03" gradientTransform="translate(49152.18 -40937.99) rotate(156) scale(48.14 -48.14)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#000f38"/>
-      <stop offset=".49" stop-color="#000f5e"/>
+    <linearGradient id="linear-gradient" x1="1701.95" y1="20.17" x2="1704.92" y2="20.17" gradientTransform="translate(75960.79 -32206.82) rotate(156) scale(48.14)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#70bcff"/>
+      <stop offset=".49" stop-color="#0073e0"/>
       <stop offset=".73" stop-color="#000f92"/>
-      <stop offset=".9" stop-color="#0073e0"/>
-      <stop offset="1" stop-color="#70bcff"/>
+      <stop offset=".9" stop-color="#000f5c"/>
+      <stop offset="1" stop-color="#000f31"/>
     </linearGradient>
   </defs>
-  <g class="st3">
-    <g class="st3">
-      <text class="st0" transform="translate(-13.28 325.28)"><tspan x="0" y="0">mskcc</tspan></text>
-      <text class="st2" transform="translate(614.23 325.28)"><tspan x="0" y="0">/</tspan></text>
+  <g class="st2">
+    <g class="st2">
+      <text class="st3" transform="translate(-13.28 325.28)"><tspan x="0" y="0">mskcc</tspan></text>
     </g>
-    <g class="st3">
-      <text class="st1" transform="translate(707.61 325.28)"><tspan x="0" y="0">SV</tspan></text>
-    </g>
-    <g class="st3">
-      <text class="st4" transform="translate(977.5 325.28)"><tspan x="0" y="0">torm</tspan></text>
+    <g class="st2">
+      <text class="st1" transform="translate(614.23 325.28)"><tspan x="0" y="0">/</tspan></text>
     </g>
   </g>
-  <path id="path67" class="st5" d="M633.24,345.85l54.78-179.23-77.02,179.23h22.25-.01Z"/>
+  <g class="st2">
+    <g class="st2">
+      <text class="st0" transform="translate(707.61 325.28)"><tspan x="0" y="0">SV</tspan></text>
+    </g>
+  </g>
+  <g class="st2">
+    <g class="st2">
+      <text class="st3" transform="translate(977.5 325.28)"><tspan x="0" y="0">torm</tspan></text>
+    </g>
+  </g>
+  <path id="path67" class="st4" d="M633.24,345.85l54.78-179.23-77.02,179.23h22.25-.01Z"/>
 </svg>
