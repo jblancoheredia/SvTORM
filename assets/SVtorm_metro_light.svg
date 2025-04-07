@@ -3,7 +3,7 @@
    id="Layer_1"
    version="1.1"
    viewBox="0 0 600 250"
-   sodipodi:docname="SVtorm.svg"
+   sodipodi:docname="SVtorm0.svg"
    inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -20,13 +20,17 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="3.79"
      inkscape:cx="290.23747"
-     inkscape:cy="128.75989"
+     inkscape:cy="127.17678"
      inkscape:window-width="3184"
      inkscape:window-height="1283"
      inkscape:window-x="1196"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g9" />
+     inkscape:current-layer="Layer_1" />
+  <path
+     style="fill:#ffffff;stroke:#ffffff"
+     d="M 443.79947,166.75462 443.53562,73.878628"
+     id="path3" />
   <path
      style="fill:none;stroke:#ffffff;stroke-width:1.20375"
      d="m 171.83136,166.31182 362.35354,-0.006"
@@ -348,52 +352,6 @@
        style="stroke:#6600ff;fill:#6600ff" />
   </g>
   <g
-     id="g33"
-     transform="translate(68.934037,39.451187)">
-    <g
-       id="g31">
-      <rect
-         class="st7"
-         x="354.60999"
-         y="4.3600001"
-         width="38.099998"
-         height="47.619999"
-         id="rect28" />
-      <rect
-         class="st8"
-         x="352.23001"
-         y="23.4"
-         width="42.860001"
-         height="19.049999"
-         id="rect29" />
-      <rect
-         class="st7"
-         x="356.98999"
-         y="6.7399998"
-         width="38.099998"
-         height="47.619999"
-         id="rect30" />
-      <rect
-         class="st6"
-         x="354.60999"
-         y="25.780001"
-         width="42.860001"
-         height="19.049999"
-         id="rect31" />
-    </g>
-    <g
-       class="st2"
-       id="g32">
-      <text
-         class="st4"
-         transform="translate(369.5,38.86)"
-         id="text31"><tspan
-           x="0"
-           y="0"
-           id="tspan31">pdf</tspan></text>
-    </g>
-  </g>
-  <g
      class="st2"
      id="g34"
      transform="translate(39.229552,-49.036005)">
@@ -637,6 +595,26 @@
          href="#path1" />
     </animateMotion>
   </circle>
+  <circle
+     id="circle3"
+     cx=".01"
+     cy="-.63"
+     r="3.44">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="5.2s"
+       calcMode="paced"
+       dur="3s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.3;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path3" />
+    </animateMotion>
+  </circle>
   <path
      class="st11"
      d="m 130.39,95.99 v 0 c 4.14,0 7.5,3.36 7.5,7.5 v 0 c 0,4.14 -3.36,7.5 -7.5,7.5 v 0 c -4.14,0 -7.5,-3.36 -7.5,-7.5 v 0 c 0,-4.14 3.36,-7.5 7.5,-7.5 z"
@@ -681,4 +659,50 @@
      class="st11"
      d="m 490.74318,159.06 v 0 c 4.14,0 7.5,3.36 7.5,7.5 v 0 c 0,4.14 -3.36,7.5 -7.5,7.5 v 0 c -4.14,0 -7.5,-3.36 -7.5,-7.5 v 0 c 0,-4.14 3.36,-7.5 7.5,-7.5 z"
      id="path28" />
+  <g
+     id="g33"
+     transform="translate(68.934037,39.451187)">
+    <g
+       id="g31">
+      <rect
+         class="st7"
+         x="354.60999"
+         y="4.3600001"
+         width="38.099998"
+         height="47.619999"
+         id="rect28" />
+      <rect
+         class="st8"
+         x="352.23001"
+         y="23.4"
+         width="42.860001"
+         height="19.049999"
+         id="rect29" />
+      <rect
+         class="st7"
+         x="356.98999"
+         y="6.7399998"
+         width="38.099998"
+         height="47.619999"
+         id="rect30" />
+      <rect
+         class="st6"
+         x="354.60999"
+         y="25.780001"
+         width="42.860001"
+         height="19.049999"
+         id="rect31" />
+    </g>
+    <g
+       class="st2"
+       id="g32">
+      <text
+         class="st4"
+         transform="translate(369.5,38.86)"
+         id="text31"><tspan
+           x="0"
+           y="0"
+           id="tspan31">pdf</tspan></text>
+    </g>
+  </g>
 </svg>
