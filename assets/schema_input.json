@@ -1,0 +1,67 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/mskcc/svtorm/main/assets/schema_input.json",
+    "title": "mskcc/svtorm pipeline - params.input schema",
+    "description": "Schema for the file provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "patient": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Patient ID must be provided and cannot contain spaces",
+                "meta": ["patient"]
+            },
+            "sample": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Sample name must be provided and cannot contain spaces",
+                "meta": ["sample"]
+            },
+            "status": {
+                "type": "integer",
+                "errorMessage": "Status can only be 0 (normal) or 1 (tumor). Defaults to 0, if none is supplied.",
+                "meta": ["status"],
+                "default": 1,
+                "minimum": 0,
+                "maximum": 1
+            },
+            "fastq_1": {
+                "errorMessage": "FastQ file for reads 1 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+                "type": "string",
+                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+                "format": "file-path",
+                "exists": true
+            },
+            "fastq_2": {
+                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+                "type": "string",
+                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+                "format": "file-path",
+                "exists": true
+            },
+            "bam": {
+                "errorMessage": "BAM file cannot contain spaces and must have extension '.bam'",
+                "type": "string",
+                "pattern": "^\\S+\\.bam$",
+                "format": "file-path",
+                "exists": true
+            },
+            "bai": {
+                "errorMessage": "BAM index file cannot contain spaces and must have extension '.bai'",
+                "type": "string",
+                "pattern": "^\\S+\\.bai$",
+                "format": "file-path",
+                "exists": true
+            }
+        },
+        "anyOf": ["fastq_1", "bam"],
+        "dependentRequired": {
+            "bai": ["bam"],
+            "fastq_2": ["fastq_1"]
+        },
+        "required": ["patient", "sample"],
+        "uniqueEntries": ["sample"]
+    }
+}

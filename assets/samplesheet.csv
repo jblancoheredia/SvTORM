@@ -1,0 +1,3 @@
+patient,sample,bam,bai
+PATIENT,PATIENT_SAMPLE_NORMAL,/path/to/normal/bam/file/SAMPLE_NORMAL.bam,/path/to/normal/bam/file/SAMPLE_NORMAL.bai
+PATIENT,PATIENT_SAMPLE_TUMOUR,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bam,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bai
