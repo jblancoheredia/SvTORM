@@ -1,4 +1,4 @@
-process IS_BAM_PAIRED {
+process BAM_MATCH {
     tag "$meta.id"
     label 'process_low'
 

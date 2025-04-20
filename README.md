@@ -1,7 +1,7 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/SVtorm_logo_dark.svg">
-    <img alt="mskcc/svtorm" src="assets/SVtorm_logo_light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/mskcc-svtorm_logo_dark.png">
+    <img alt="mskcc/svtorm" src="assets/mskcc-svtorm_logo_light.png">
   </picture>
 </h1>
 
@@ -51,10 +51,11 @@ First, prepare a samplesheet with your input data that looks as follows:
 `samplesheet.csv`:
 
 ```csv
-sample,bam_n,bam_t,panel,genome,paired
-SAMPLE,/path/to/normal/bam/file/SAMPLE_NORMAL.bam,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bam,Av2,GRCh38,TRUE
+patient,sample,status,bam,bai
+PATIENT,SAMPLE,0,/path/to/normal/bam/file/SAMPLE_NORMAL.bam,/path/to/normal/bam/file/SAMPLE_NORMAL.bai
+PATIENT,SAMPLE,1,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bam,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bai
 ```
-Each row represents a sample with a pair of BAM files, tumour and normal (somatic calling), the target panel for the sequencing, the genome reference used during the BAM aligment and if the data is pair-end.
+Each row represents a sample BAM file, tumour and normal (somatic calling) is determined by status 0 for normal and 1 for tumour.
 
 Now, you can run the pipeline using:
 

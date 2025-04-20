@@ -3,9 +3,9 @@
 //
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    SUBWORKFLOW DEFINITION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                        SUBWORKFLOW DEFINITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 workflow UTILS_NFCORE_PIPELINE {
@@ -21,9 +21,9 @@ workflow UTILS_NFCORE_PIPELINE {
 }
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    FUNCTIONS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                               FUNCTIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 //
@@ -54,6 +54,21 @@ def checkProfileProvided(nextflow_cli_args) {
             "nf-core pipelines do not accept positional arguments. The positional argument `${nextflow_cli_args[0]}` has been detected.\n" + "HINT: A common mistake is to provide multiple values separated by spaces e.g. `-profile test, docker`.\n"
         )
     }
+}
+
+//
+// Citation string for pipeline
+//
+def workflowCitation() {
+    def temp_doi_ref = ""
+    def manifest_doi = workflow.manifest.doi.tokenize(",")
+    // Handling multiple DOIs
+    // Removing `https://doi.org/` to handle pipelines using DOIs vs DOI resolvers
+    // Removing ` ` since the manifest.doi is a string and not a proper list
+    manifest_doi.each { doi_ref ->
+        temp_doi_ref += "  https://doi.org/${doi_ref.replace('https://doi.org/', '').replace(' ', '')}\n"
+    }
+    return "If you use ${workflow.manifest.name} for your analysis please cite:\n\n" + "* The pipeline\n" + temp_doi_ref + "\n" + "* The nf-core framework\n" + "  https://doi.org/10.1038/s41587-020-0439-x\n\n" + "* Software dependencies\n" + "  https://github.com/${workflow.manifest.name}/blob/master/CITATIONS.md"
 }
 
 //
@@ -136,6 +151,33 @@ def paramsSummaryMultiqc(summary_params) {
 }
 
 //
+// NF-CORE Logo
+//
+def nfCoreLogo(monochrome_logs=true) {
+    def colors = logColours(monochrome_logs) as Map
+    String.format(
+        """\n
+        ${dashedLine(monochrome_logs)}
+                                                ${colors.green},--.${colors.black}/${colors.green},-.${colors.reset}
+        ${colors.blue}        ___     __   __   __   ___     ${colors.green}/,-._.--~\'${colors.reset}
+        ${colors.blue}  |\\ | |__  __ /  ` /  \\ |__) |__         ${colors.yellow}}  {${colors.reset}
+        ${colors.blue}  | \\| |       \\__, \\__/ |  \\ |___     ${colors.green}\\`-._,-`-,${colors.reset}
+                                                ${colors.green}`._,._,\'${colors.reset}
+        ${colors.purple}  ${workflow.manifest.name} ${getWorkflowVersion()}${colors.reset}
+        ${dashedLine(monochrome_logs)}
+        """.stripIndent()
+    )
+}
+
+//
+// Return Dashed Line
+//
+def dashedLine(monochrome_logs=true) {
+    def colors = logColours(monochrome_logs) as Map
+    return "-${colors.dim}----------------------------------------------------${colors.reset}-"
+}
+
+//
 // ANSII colours used for terminal logging
 //
 def logColours(monochrome_logs=true) {
@@ -201,6 +243,30 @@ def logColours(monochrome_logs=true) {
     colorcodes['biwhite']  = monochrome_logs ? '' : "\033[1;97m"
 
     return colorcodes
+}
+
+//
+// Attach the multiqc report to email
+//
+def attachMultiqcReport(multiqc_report) {
+    def mqc_report = null
+    try {
+        if (workflow.success) {
+            mqc_report = multiqc_report.getVal()
+            if (mqc_report.getClass() == ArrayList && mqc_report.size() >= 1) {
+                if (mqc_report.size() > 1) {
+                    log.warn("[${workflow.manifest.name}] Found multiple reports from process 'MULTIQC', will use only one")
+                }
+                mqc_report = mqc_report[0]
+            }
+        }
+    }
+    catch (Exception all) {
+        if (multiqc_report) {
+            log.warn("[${workflow.manifest.name}] Could not attach MultiQC report to summary email")
+        }
+    }
+    return mqc_report
 }
 
 // Return a single report from an object that may be a Path or List

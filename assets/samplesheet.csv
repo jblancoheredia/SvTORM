@@ -1,3 +1,2 @@
-patient,sample,bam,bai
-PATIENT,PATIENT_SAMPLE_NORMAL,/path/to/normal/bam/file/SAMPLE_NORMAL.bam,/path/to/normal/bam/file/SAMPLE_NORMAL.bai
-PATIENT,PATIENT_SAMPLE_TUMOUR,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bam,/path/to/tumour/bam/file/SAMPLE_TUMOUR.bai
+patient,sample,status,fastq_1,fastq_2
+PATIENT_ID,SAMPLE_PAIRED_END,1,/path/to/fastq/files/AEG588A1_S1_L002_R1_001.fastq.gz,/path/to/fastq/files/AEG588A1_S1_L002_R2_001.fastq.gz

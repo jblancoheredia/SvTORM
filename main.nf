@@ -70,30 +70,29 @@ workflow {
     // SUBWORKFLOW: Run initialisation tasks
     //
     PIPELINE_INITIALISATION (
-        params.version,
-        params.validate_params,
-        params.monochrome_logs,
-        args,
+        params.input,
         params.outdir,
-        params.input
+        params.version,
+        params.monochrome_logs,
+        params.validate_params,
+        args
     )
 
     //
     // WORKFLOW: Run main workflow
     //
-    MSKCC_SVTORM (
-        PIPELINE_INITIALISATION.out.samplesheet
-    )
+    MSKCC_SVTORM (PIPELINE_INITIALISATION.out.samplesheet)
+
     //
     // SUBWORKFLOW: Run completion tasks
     //
     PIPELINE_COMPLETION (
         params.email,
+        params.outdir,
+        params.hook_url,
         params.email_on_fail,
         params.plaintext_email,
-        params.outdir,
         params.monochrome_logs,
-        params.hook_url,
         MSKCC_SVTORM.out.multiqc_report
     )
 }

@@ -17,11 +17,16 @@ include { samplesheetToList                                                     
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+include { dashedLine                                                                        } from '../../nf-core/utils_nfcore_pipeline'
+include { logColours                                                                        } from '../../nf-core/utils_nfcore_pipeline'
 include { imNotification                                                                    } from '../../nf-core/utils_nfcore_pipeline'
 include { completionEmail                                                                   } from '../../nf-core/utils_nfcore_pipeline'
+include { workflowCitation                                                                  } from '../../nf-core/utils_nfcore_pipeline'
 include { completionSummary                                                                 } from '../../nf-core/utils_nfcore_pipeline'
+include { getWorkflowVersion                                                                } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NFSCHEMA_PLUGIN                                                             } from '../../nf-core/utils_nfschema_plugin'
 include { UTILS_NFCORE_PIPELINE                                                             } from '../../nf-core/utils_nfcore_pipeline'
+include { SAMPLESHEET_TO_CHANNEL                                                            } from '../../local/samplesheet_to_channel'
 include { UTILS_NEXTFLOW_PIPELINE                                                           } from '../../nf-core/utils_nextflow_pipeline'
 
 /*
@@ -33,16 +38,16 @@ include { UTILS_NEXTFLOW_PIPELINE                                               
 workflow PIPELINE_INITIALISATION {
 
     take:
-    version           // boolean: Display version and exit
-    validate_params   // boolean: Boolean whether to validate parameters against the schema at runtime
-    monochrome_logs   // boolean: Do not use coloured log outputs
-    nextflow_cli_args // array: List of positional nextflow CLI args
-    outdir            // string: The output directory where the results will be saved
-    input             // string: Path to input samplesheet
+    input                       //  string: Path to input samplesheet
+    outdir                      //  string: The output directory where the results will be saved
+    version                     //  boolean: Display version and exit
+    monochrome_logs             //  boolean: Do not use coloured log outputs
+    validate_params             //  boolean: Boolean whether to validate parameters against the schema at runtime
+    nextflow_cli_args           //  array: List of positional nextflow CLI args
 
     main:
 
-    ch_versions = Channel.empty()
+    versions = Channel.empty()
 
     //
     // Print version and exit if required and dump pipeline parameters to JSON file
@@ -66,9 +71,7 @@ workflow PIPELINE_INITIALISATION {
     //
     // Check config provided to the pipeline
     //
-    UTILS_NFCORE_PIPELINE (
-        nextflow_cli_args
-    )
+    UTILS_NFCORE_PIPELINE(nextflow_cli_args)
 
     //
     // Custom validation for pipeline parameters
@@ -82,11 +85,15 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
+            meta, fastq_1, fastq_2, bam ->
+                if (!bam) {
+                    if (!fastq_2) {
+                        return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
+                    } else {
+                        return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+                    }
                 } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+                        return [ meta.id, meta, [ bam ] ]
                 }
         }
         .groupTuple()
@@ -94,8 +101,8 @@ workflow PIPELINE_INITIALISATION {
             validateInputSamplesheet(samplesheet)
         }
         .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
+            meta, input_files ->
+                return [ meta, input_files.flatten() ]
         }
         .set { ch_samplesheet }
 
@@ -113,13 +120,13 @@ workflow PIPELINE_INITIALISATION {
 workflow PIPELINE_COMPLETION {
 
     take:
-    email           //  string: email address
-    email_on_fail   //  string: email address sent on pipeline failure
-    plaintext_email // boolean: Send plain-text email instead of HTML
-    outdir          //    path: Path to output directory where results will be published
-    monochrome_logs // boolean: Disable ANSI colour codes in log output
-    hook_url        //  string: hook URL for notifications
-    multiqc_report  //  string: Path to MultiQC report
+    email                       //  string: email address
+    outdir                      //  path: Path to output directory where results will be published
+    hook_url                    //  string: hook URL for notifications
+    email_on_fail               //  string: email address sent on pipeline failure
+    plaintext_email             //  boolean: Send plain-text email instead of HTML
+    monochrome_logs             //  boolean: Disable ANSI colour codes in log output
+    multiqc_report              //  string: Path to MultiQC report
 
     main:
     summary_params = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
@@ -159,6 +166,27 @@ workflow PIPELINE_COMPLETION {
 */
 
 //
+// Extract flowcell ID from FASTQ file header (Illumina format)
+//
+def flowcellLaneFromFastq(path) {
+    def line
+    path.withInputStream { inputStream ->
+        new java.util.zip.GZIPInputStream(inputStream).withReader('ASCII') { reader ->
+            line = reader.readLine()
+        }
+    }
+
+    assert line.startsWith('@'), "FASTQ file (${path}) doesn't start with '@' character."
+
+    def fields = line.substring(1).split(':')
+    if (fields.size() >= 3) {
+        return fields[2]  // Typical Illumina header format
+    } else {
+        error("FASTQ header format unexpected in file ${path}")
+    }
+}
+
+//
 // Check and validate pipeline parameters
 //
 def validateInputParameters() {
@@ -169,21 +197,42 @@ def validateInputParameters() {
 // Validate channels from input samplesheet
 //
 def validateInputSamplesheet(input) {
-    def (metas, bams_n, bams_t, panel, genome, paired) = input[1..5]
+    def (metas, fastqs) = input[1..2]
 
-    // Check that multiple runs of the same sample have the same paired-end status
-    def pairedness_ok = metas.collect { meta -> meta.paired }.unique().size == 1
-    if (!pairedness_ok) {
-        error("Please check input samplesheet -> Multiple runs of a sample must be of the same datatype (paired-end or single-end): ${metas[0].id}")
+    // Check that multiple runs of the same sample are of the same datatype i.e. single-end / paired-end
+    def endedness_ok = metas.collect{ meta -> meta.single_end }.unique().size == 1
+    if (!endedness_ok) {
+        error("Please check input samplesheet -> Multiple runs of a sample must be of the same datatype i.e. single-end or paired-end: ${metas[0].id}")
     }
 
-    // Ensure both normal and tumor BAM files exist
-    def missing_bams = metas.findAll { meta -> !meta.bam_n || !meta.bam_t }
-    if (missing_bams) {
-        error("Missing BAM files in input samplesheet -> Each sample must have both normal (bam_n) and tumor (bam_t) BAM files: ${missing_bams*.id}")
+    seq_type_ok = metas.collect{ it.seq_type }.unique().size == 1
+    if (!seq_type_ok) {
+        error(
+            "Check input samplesheet -> Multiple runs of the same "
+            + "sample must have the same sequence type: ${metas[0].id}"
+        )
     }
 
-    return [ metas[0], bams_n, bams_t, panel, genome, paired ]
+    data_type_ok = metas.collect{ it.data_type }.unique().size == 1
+    if (!data_type_ok) {
+        error(
+            "Check input samplesheet -> Multiple runs of the same "
+            + "sample must have the same data type (fastq only, bam "
+            + "concatenation not currently supported): ${metas[0].id}"
+        )
+    }
+
+    if (metas.collect{ it.data_type }.unique() == "bam") {
+        bam_count_ok = metas.collect{ it.data_type }.size == 1
+        if(!bam_count_ok) {
+            error(
+                "Check input samplesheet -> Multiple runs of the same "
+                + "bam sample is not currently supported: ${metas[0].id}"
+            )
+        }
+    }
+
+    return [ metas[0], fastqs ]
 }
 
 //
@@ -277,3 +326,30 @@ def methodsDescriptionText(mqc_methods_yaml) {
     return description_html.toString()
 }
 
+//
+// MSKCC/SVtorm logo
+//
+def nfCoreLogo(monochrome_logs=true) {
+    Map colors = logColours(monochrome_logs)
+    String.format(
+        """\n
+        ${dashedLine(monochrome_logs)}
+                                                ${colors.green},--.${colors.black}/${colors.green},-.${colors.reset}
+        ${colors.blue}  __  __  ____  _  __   ____   ____     ${colors.green}/,-._.--~\'${colors.reset}
+        ${colors.blue} |  \\/  ||  _ \\| |/ /  / ___| / ___|       ${colors.yellow}}  {${colors.reset}
+        ${colors.blue} | |\\/| || | | | ' /  | |    \\___ \\    ${colors.green}\\`-._,-`-,${colors.reset}
+        ${colors.blue} | |  | || |_| | . \\  | |___  ___) |   ${colors.green}`._,._,\'${colors.reset}
+        ${colors.blue} |_|  |_||____/|_|\\_\\  \\____||____/${colors.reset}
+
+        ${colors.white}   _____ _____     ____  ____   __  __${colors.reset}
+        ${colors.white}  / ____|_   _|   / __ \\|  _ \\ |  \\/  |${colors.reset}
+        ${colors.white} | (___   | |    | |  | | |_) || |\\/| |${colors.reset}
+        ${colors.white}  \\___ \\  | |    | |  | |  _ < | |  | |${colors.reset}
+        ${colors.white}  ____) |_| |_   | |__| | |_) ||_|  |_|${colors.reset}
+        ${colors.white} |_____/|_____|   \\____/|____/${colors.reset}
+
+        ${colors.purple}  MSKCC SVtorm ${getWorkflowVersion()}${colors.reset}
+        ${dashedLine(monochrome_logs)}
+        """.stripIndent()
+    )
+}

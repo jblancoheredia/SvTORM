@@ -21,9 +21,9 @@ include { SVABA                                                                 
 include { DRAWSV                                                                        } from '../modules/local/drawsv/main'
 include { GRIDSS                                                                        } from '../modules/local/gridss/main'
 include { MULTIQC                                                                       } from '../modules/nf-core/multiqc/main'
+include { BAM_MATCH                                                                     } from '../modules/local/bammatch/main'
 include { CAT_FASTQ                                                                     } from '../modules/nf-core/cat/fastq/main'  
 include { RECALL_SV                                                                     } from '../modules/local/recallsv/main'
-include { IS_BAM_PAIRED                                                                 } from '../modules/local/isbampaired/main'
 include { MANTA_SOMATIC                                                                 } from '../modules/nf-core/manta/somatic/main'
 include { SURVIVOR_MERGE                                                                } from '../modules/local/survivor/merge/main'
 include { SURVIVOR_FILTER                                                               } from '../modules/local/survivor/filter/main'
@@ -86,14 +86,14 @@ workflow SVTORM {
     ch_versions = ch_versions.mix(CAT_FASTQ.out.versions.first())
 
     // determine BAM pairedness for fastq conversion
-    IS_BAM_PAIRED (ch_input_files.bam )
-    IS_BAM_PAIRED.out.reads
+    BAM_MATCH (ch_input_files.bam )
+    BAM_MATCH.out.reads
         .map {meta, reads, single_end ->
             meta["single_end"] = single_end.text.toBoolean()
             [meta, reads]
         }
         .set { ch_bam_pe_corrected }
-    ch_versions = ch_versions.mix(IS_BAM_PAIRED.out.versions)
+    ch_versions = ch_versions.mix(BAM_MATCH.out.versions)
 
 //    //
 //    // Create channel from input file provided through params.input
