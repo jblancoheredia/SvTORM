@@ -1,21 +1,22 @@
 process RECALL_SV {
-    tag "$meta.id"
+    tag "$meta.patient_id"
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://drgiovianco/gridss:2.13.2':
-        'drgiovianco/gridss:2.13.2' }"
+        'docker://blancojmskcc/gridss:2.13.2':
+        'blancojmskcc/gridss:2.13.2' }"
 
     input:
-    tuple val(meta) , path(tbam), path(tbai)
-    tuple val(meta1), path(fasta)
-    tuple val(meta2), path(fasta_fai)
-    tuple val(meta3), path(interval_list)
-    tuple val(meta4), path(known_sites), path(known_sites_tbi)
+    tuple val(meta), 
+          val(meta0), path(normal_bam), path(normal_bai),
+          val(meta1), path(tumour_bam), path(tumour_bai),
+          val(meta2), path(interval_list)
+    tuple val(meta3), path(fasta)
+    tuple val(meta4), path(fasta_fai)
+    tuple val(meta5), path(known_sites)
+    tuple val(meta6), path(known_sites_tbi)
     path(refflat)
-    path(nbam)
-    path(nbai)
     path(bed)
     path(blocklist)
     path(bwa_index)
@@ -23,23 +24,23 @@ process RECALL_SV {
     path(pon_dir)
 
     output:
-    path "versions.yml",                         emit: versions
     tuple val(meta), path("*.unfiltered.vcf"),   emit: vcf
+    path "versions.yml"                      ,   emit: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.patient_id}"
     def VERSION = '2.13.2' // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     def bwa = bwa_index ? "cp -s ${bwa_index}/* ." : ""
     def CollectGridssMetrics = "java -cp /opt/gridss/gridss--gridss-jar-with-dependencies.jar gridss.analysis.CollectGridssMetrics"
     """
-    samtools view -h -F 256 -o ${prefix}_N_filtered.bam ${nbam}
+    samtools view -h -F 256 -o ${prefix}_N_filtered.bam ${normal_bam}
     samtools index ${prefix}_N_filtered.bam
 
-    samtools view -h -F 256 -o ${prefix}_T_filtered.bam ${tbam}
+    samtools view -h -F 256 -o ${prefix}_T_filtered.bam ${tumour_bam}
     samtools index ${prefix}_T_filtered.bam
 
     rm ${fasta} ${fasta_fai}
@@ -123,7 +124,7 @@ process RECALL_SV {
     END_VERSIONS
     """
     stub:
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.patient_id}"
     def VERSION = '2.13.2' // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     touch ${prefix}.recall.unfiltered.vcf

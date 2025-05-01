@@ -1,42 +1,47 @@
 process MANTA_SOMATIC {
-    tag "$meta.id"
+    tag "$meta_tumour.patient_id"
     label 'process_medium'
-    label 'error_retry'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/manta:1.6.0--h9ee0642_1' :
-        'biocontainers/manta:1.6.0--h9ee0642_1' }"
+        'quay.io/biocontainers/manta:1.6.0--h9ee0642_1' }"
 
     input:
-    tuple val(meta) , path(input_normal), path(input_index_normal), path(input_tumor), path(input_index_tumor), path(target_bed), path(target_bed_tbi)
-    tuple val(meta2), path(fasta)
-    tuple val(meta3), path(fai)
+    tuple val(patient_id), 
+          val(meta_normal), path(normal_bam), path(normal_bai),
+          val(meta_tumour), path(tumour_bam), path(tumour_bai)
+    tuple val(meta2), path(target_bed) 
+    tuple val(meta3), path(bed_index)
+    tuple val(meta4), path(fasta)
+    tuple val(meta5), path(fai)
     path(config)
 
     output:
-    tuple val(meta), path("*.candidate_small_indels.vcf.gz")     , emit: candidate_small_indels_vcf
-    tuple val(meta), path("*.candidate_small_indels.vcf.gz.tbi") , emit: candidate_small_indels_vcf_tbi
-    tuple val(meta), path("*.candidate_sv.vcf.gz")               , emit: candidate_sv_vcf
-    tuple val(meta), path("*.candidate_sv.vcf.gz.tbi")           , emit: candidate_sv_vcf_tbi
-    tuple val(meta), path("*.diploid_sv.vcf.gz")                 , emit: diploid_sv_vcf
-    tuple val(meta), path("*.diploid_sv.vcf.gz.tbi")             , emit: diploid_sv_vcf_tbi
-    tuple val(meta), path("*.somatic_sv.vcf.gz")                 , emit: somatic_sv_vcf
-    tuple val(meta), path("*.somatic_sv.vcf.gz.tbi")             , emit: somatic_sv_vcf_tbi
-    path "versions.yml"                                          , emit: versions
+    tuple val(meta_tumour), path("*.candidate_small_indels.vcf.gz")     , emit: candidate_small_indels_vcf
+    tuple val(meta_tumour), path("*.candidate_small_indels.vcf.gz.tbi") , emit: candidate_small_indels_vcf_tbi
+    tuple val(meta_tumour), path("*.candidate_sv.vcf.gz")               , emit: candidate_sv_vcf
+    tuple val(meta_tumour), path("*.candidate_sv.vcf.gz.tbi")           , emit: candidate_sv_vcf_tbi
+    tuple val(meta_tumour), path("*.diploid_sv.vcf.gz")                 , emit: diploid_sv_vcf
+    tuple val(meta_tumour), path("*.diploid_sv.vcf.gz.tbi")             , emit: diploid_sv_vcf_tbi
+    tuple val(meta_tumour), path("*.somatic_sv.vcf.gz")                 , emit: somatic_sv_vcf
+    tuple val(meta_tumour), path("*.somatic_sv.vcf.gz.tbi")             , emit: somatic_sv_vcf_tbi
+    tuple val(meta_tumour), path("*.manta.unfiltered.vcf")              , emit: vcf
+    tuple val(meta_tumour), path("*.tsv")                               , emit: metrics
+    path "versions.yml"                                                 , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta_tumour.patient_id}"
     def options_manta = target_bed ? "--callRegions $target_bed" : ""
     def config_option = config ? "--config ${config}" : ""
     """
     configManta.py \\
-        --tumorBam $input_tumor \\
-        --normalBam $input_normal \\
+        --tumorBam $tumour_bam \\
+        --normalBam $normal_bam \\
         --reference $fasta \\
         ${config_option} \\
         --runDir manta \\
@@ -61,6 +66,16 @@ process MANTA_SOMATIC {
         ${prefix}.somatic_sv.vcf.gz
     mv manta/results/variants/somaticSV.vcf.gz.tbi \\
         ${prefix}.somatic_sv.vcf.gz.tbi
+    mv manta/results/stats/alignmentStatsSummary.txt \\
+        ${prefix}.alignmentStatsSummary.tsv
+    mv manta/results/stats/svCandidateGenerationStats.tsv \\
+        ${prefix}.svCandidateGenerationStats.tsv
+    mv manta/results/stats/svLocusGraphStats.tsv \\
+        ${prefix}.svLocusGraphStats.tsv
+
+    cp ${prefix}.somatic_sv.vcf.gz ${prefix}.manta.unfiltered.vcf.gz
+
+    gunzip ${prefix}.manta.unfiltered.vcf.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -69,7 +84,7 @@ process MANTA_SOMATIC {
     """
 
     stub:
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta_tumour.patient_id}"
     """
     echo "" | gzip > ${prefix}.candidate_small_indels.vcf.gz
     touch ${prefix}.candidate_small_indels.vcf.gz.tbi

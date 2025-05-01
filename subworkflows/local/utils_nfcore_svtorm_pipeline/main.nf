@@ -47,7 +47,7 @@ workflow PIPELINE_INITIALISATION {
 
     main:
 
-    versions = Channel.empty()
+    ch_versions = Channel.empty()
 
     //
     // Print version and exit if required and dump pipeline parameters to JSON file
@@ -85,7 +85,7 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
-            meta, fastq_1, fastq_2, bam ->
+            meta, fastq_1, fastq_2, bam, bai ->
                 if (!bam) {
                     if (!fastq_2) {
                         return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
@@ -93,7 +93,7 @@ workflow PIPELINE_INITIALISATION {
                         return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
                     }
                 } else {
-                        return [ meta.id, meta, [ bam ] ]
+                        return [ meta.id, meta, [ bam, bai ] ]
                 }
         }
         .groupTuple()
@@ -144,7 +144,7 @@ workflow PIPELINE_COMPLETION {
                 plaintext_email,
                 outdir,
                 monochrome_logs,
-                multiqc_reports.getVal(),
+                multiqc_reports
             )
         }
 
@@ -165,26 +165,6 @@ workflow PIPELINE_COMPLETION {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-//
-// Extract flowcell ID from FASTQ file header (Illumina format)
-//
-def flowcellLaneFromFastq(path) {
-    def line
-    path.withInputStream { inputStream ->
-        new java.util.zip.GZIPInputStream(inputStream).withReader('ASCII') { reader ->
-            line = reader.readLine()
-        }
-    }
-
-    assert line.startsWith('@'), "FASTQ file (${path}) doesn't start with '@' character."
-
-    def fields = line.substring(1).split(':')
-    if (fields.size() >= 3) {
-        return fields[2]  // Typical Illumina header format
-    } else {
-        error("FASTQ header format unexpected in file ${path}")
-    }
-}
 
 //
 // Check and validate pipeline parameters
@@ -264,12 +244,13 @@ def genomeExistsError() {
 // Generate methods description for MultiQC
 //
 def toolCitationText() {
-    // TODO nf-core: Optionally add in-text citation tools to this list.
     // Can use ternary operators to dynamically construct based conditions, e.g. params["run_xyz"] ? "Tool (Foo et al. 2023)" : "",
     // Uncomment function in methodsDescriptionText to render in MultiQC report
     def citation_text = [
             "Tools used in the workflow included:",
             "FastQC (Andrews 2010),",
+            "OptiType (Szolek et al. 2014)",
+            "Yara (Siragusa et al. 2013)",
             "MultiQC (Ewels et al. 2016)",
             "."
         ].join(' ').trim()
@@ -278,12 +259,13 @@ def toolCitationText() {
 }
 
 def toolBibliographyText() {
-    // TODO nf-core: Optionally add bibliographic entries to this list.
     // Can use ternary operators to dynamically construct based conditions, e.g. params["run_xyz"] ? "<li>Author (2023) Pub name, Journal, DOI</li>" : "",
     // Uncomment function in methodsDescriptionText to render in MultiQC report
     def reference_text = [
             "<li>Andrews S, (2010) FastQC, URL: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).</li>",
-            "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>"
+            "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>",
+            "<li>Siragusa E., Weese D., Reinert K. (2013) Fast and accurate read mapping with approximate seeds and multiple backtracking. Nucleic Acids Res. , 41(7):e78. doi: 10.1093/nar/gkt005</li>",
+            "<li>Szolek A., Schubert B., Mohr C., Sturm M., Feldhahn M., Kohlbacher O. (2014) OptiType: precision HLA typing from next-generation sequencing data. Bioinformatics. , 30(23):3310-6. doi: 10.1093/bioinformatics/btu548</li>"
         ].join(' ').trim()
 
     return reference_text
@@ -324,32 +306,4 @@ def methodsDescriptionText(mqc_methods_yaml) {
     def description_html = engine.createTemplate(methods_text).make(meta)
 
     return description_html.toString()
-}
-
-//
-// MSKCC/SVtorm logo
-//
-def nfCoreLogo(monochrome_logs=true) {
-    Map colors = logColours(monochrome_logs)
-    String.format(
-        """\n
-        ${dashedLine(monochrome_logs)}
-                                                ${colors.green},--.${colors.black}/${colors.green},-.${colors.reset}
-        ${colors.blue}  __  __  ____  _  __   ____   ____     ${colors.green}/,-._.--~\'${colors.reset}
-        ${colors.blue} |  \\/  ||  _ \\| |/ /  / ___| / ___|       ${colors.yellow}}  {${colors.reset}
-        ${colors.blue} | |\\/| || | | | ' /  | |    \\___ \\    ${colors.green}\\`-._,-`-,${colors.reset}
-        ${colors.blue} | |  | || |_| | . \\  | |___  ___) |   ${colors.green}`._,._,\'${colors.reset}
-        ${colors.blue} |_|  |_||____/|_|\\_\\  \\____||____/${colors.reset}
-
-        ${colors.white}   _____ _____     ____  ____   __  __${colors.reset}
-        ${colors.white}  / ____|_   _|   / __ \\|  _ \\ |  \\/  |${colors.reset}
-        ${colors.white} | (___   | |    | |  | | |_) || |\\/| |${colors.reset}
-        ${colors.white}  \\___ \\  | |    | |  | |  _ < | |  | |${colors.reset}
-        ${colors.white}  ____) |_| |_   | |__| | |_) ||_|  |_|${colors.reset}
-        ${colors.white} |_____/|_____|   \\____/|____/${colors.reset}
-
-        ${colors.purple}  MSKCC SVtorm ${getWorkflowVersion()}${colors.reset}
-        ${dashedLine(monochrome_logs)}
-        """.stripIndent()
-    )
 }

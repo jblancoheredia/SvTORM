@@ -9,7 +9,36 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <path
+     id="path56-92"
+     class="st22"
+     d="m 247.8253,99.457652 -35.67871,-0.0041 c -0.28,0 -0.42244,-0.310722 -0.42244,-0.02471 L 211.75,79.60844 c 0,-0.09 0.0642,-0.05031 -0.0513,-0.05031 l -82.50203,-0.144531 c 0,0 0.0484,0.01516 0.0484,0.105156 L 129.2,98.91 c 0,0.09 -0.16628,0.571716 -0.44628,0.571716 l -76.460004,0.01914"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-91"
+     class="st22"
+     d="m 247.58457,99.441196 -35.25701,0.0021 c -0.28,0 -0.60341,0.545716 -0.60341,0.635719 L 211.75,119 c 0,0.09 0.11906,1.0375 -0.16094,1.0375 l -82.22781,0.0349 c -0.27,0 -0.22578,-0.0503 -0.22578,-0.0503 L 129.2,100.01843 c 0,-0.09 -0.26571,-0.587378 -0.54571,-0.587378 l -76.360574,0.01141"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-93"
+     class="st22"
+     d="m 247.61043,99.474686 -35.33256,-0.05829 c -0.28,0 -0.52787,-0.876395 -0.52787,-1.156395 l -0.22177,-60.403966 0.009,0.07394 -82.29249,0.319463 c 0,0 -0.0375,-0.0018 -0.0375,0.04554 L 129.2,98.41 c 0,0.27 -0.22,1.037155 -0.5,1.037155 l -76.46,0.02514"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-9"
+     class="st22"
+     d="m 247.6383,99.427535 -35.41415,0.0066 c -0.28,0 -0.52586,0.289807 -0.52586,0.569805 L 211.75,160.59 c 0,0.28 -0.21,0.79216 -0.49,0.79216 l -81.46,-0.05 c -0.27,0 -0.5,-0.51216 -0.5,-0.79216 l -0.1,-60.643996 c 0,-0.27 -0.26167,-0.490123 -0.54167,-0.490123 l -76.469328,0.04228"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
   <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <path
+     id="path20"
+     class="st23"
+     d="M 252.6892,99.229734 468.49,98.983101 V 119.5831 l 57.10564,-0.0268"
+     sodipodi:nodetypes="cccc" />
   <defs
      id="defs23">
     <style
@@ -296,13 +325,19 @@
          id="stop23" />
     </linearGradient>
   </defs>
+  <path
+     id="path19"
+     class="st23"
+     d="m 252.69,99.227654 215.7992,-0.256119 8e-4,-21.243881 57.10704,-0.2"
+     sodipodi:nodetypes="cccc"
+     style="fill:none" />
   <sodipodi:namedview
      id="namedview56"
      bordercolor="#cccccc"
      borderopacity="1"
      inkscape:current-layer="Layer_1"
-     inkscape:cx="290.23747"
-     inkscape:cy="127.17678"
+     inkscape:cx="214.37859"
+     inkscape:cy="103.88579"
      inkscape:deskcolor="#d1d1d1"
      inkscape:pagecheckerboard="0"
      inkscape:pageopacity="1"
@@ -312,7 +347,7 @@
      inkscape:window-width="3184"
      inkscape:window-x="1196"
      inkscape:window-y="25"
-     inkscape:zoom="3.79"
+     inkscape:zoom="18.616598"
      pagecolor="#ffffff" />
   <g
      id="g2"
@@ -376,40 +411,6 @@
       </g>
     </g>
   </g>
-  <path
-     id="path56-9"
-     class="st22"
-     d="M247.69,98.67l-35.44.11c-.28,0-.5.22-.5.5v61.31c0,.28-.21.5-.49.5l-81.46-.05c-.27,0-.5-.22-.5-.5l-.1-61.41c0-.27-.22-.5-.5-.5l-76.46-.24"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-91"
-     class="st22"
-     d="M247.69,99.01l-35.44.03c-.28,0-.5.07-.5.16v19.8c0,.09-.21.16-.49.16l-81.46-.02c-.27,0-.5-.07-.5-.16l-.1-19.83c0-.09-.22-.16-.5-.16l-76.46-.08"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-92"
-     class="st22"
-     d="M247.69,99.05l-35.44-.03c-.28,0-.5-.07-.5-.16v-19.8c0-.09-.21-.16-.49-.16l-81.46.02c-.27,0-.5.07-.5.16l-.1,19.83c0,.09-.22.16-.5.16l-76.46.08"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-93"
-     class="st22"
-     d="M247.69,98.87l-35.44-.11c-.28,0-.5-.22-.5-.5v-61.31c0-.28-.21-.5-.49-.5l-81.46.05c-.27,0-.5.22-.5.5l-.1,61.41c0,.27-.22.5-.5.5l-76.46.24"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path20"
-     class="st23"
-     d="M252.49,98.65h216v20.6l59.6.2"
-     sodipodi:nodetypes="cccc" />
-  <path
-     id="path19"
-     class="st23"
-     d="M252.69,99.05h215.6l.2-21.5,56.2-.2"
-     sodipodi:nodetypes="cccc" />
   <g
      id="text155"
      class="st6">
@@ -460,6 +461,31 @@
              x="0"
              y="0"
              id="tspan31">Delly</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text173-7"
+     class="st6"
+     style="isolation:isolate"
+     transform="translate(286.87591,147.91095)">
+    <g
+       id="text247-9"
+       class="st6"
+       style="isolation:isolate">
+      <g
+         class="st6"
+         id="g31-3"
+         style="isolation:isolate"
+         transform="translate(0.52770451,-22)">
+        <text
+           class="st9"
+           transform="translate(156.67,20.59)"
+           id="text31-8"
+           style="font-weight:600;font-size:12px;font-family:MavenPro-SemiBold, 'Maven Pro';isolation:isolate"><tspan
+             x="0"
+             y="0"
+             id="tspan31-0">DrawSVs</tspan></text>
       </g>
     </g>
   </g>
@@ -589,25 +615,6 @@
     </g>
   </g>
   <g
-     id="text185"
-     class="st6">
-    <g
-       id="text255"
-       class="st6">
-      <g
-         class="st6"
-         id="g39">
-        <text
-           class="st2"
-           transform="translate(444.23 148.85)"
-           id="text39"><tspan
-             x="0"
-             y="0"
-             id="tspan39">DrawSVs</tspan></text>
-      </g>
-    </g>
-  </g>
-  <g
      id="g257"
      class="st6">
     <g
@@ -643,7 +650,8 @@
   </g>
   <g
      id="g259"
-     class="st6">
+     class="st6"
+     transform="translate(0,-2)">
     <g
        id="text258"
        class="st6">
@@ -652,7 +660,7 @@
          id="g42">
         <text
            class="st9"
-           transform="translate(394.41 72.81)"
+           transform="translate(394.41,72.81)"
            id="text42"><tspan
              x="0"
              y="0"
@@ -768,7 +776,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -789,7 +797,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -810,7 +818,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -831,7 +839,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -852,7 +860,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -873,7 +881,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#999999">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"

@@ -9,7 +9,36 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <path
+     id="path56-92"
+     class="st22"
+     d="m 247.8253,99.457652 -35.67871,-0.0041 c -0.28,0 -0.42244,-0.310722 -0.42244,-0.02471 L 211.75,79.60844 c 0,-0.09 0.0642,-0.05031 -0.0513,-0.05031 l -82.50203,-0.144531 c 0,0 0.0484,0.01516 0.0484,0.105156 L 129.2,98.91 c 0,0.09 -0.16628,0.571716 -0.44628,0.571716 l -76.460004,0.01914"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-91"
+     class="st22"
+     d="m 247.58457,99.441196 -35.25701,0.0021 c -0.28,0 -0.60341,0.545716 -0.60341,0.635719 L 211.75,119 c 0,0.09 0.11906,1.0375 -0.16094,1.0375 l -82.22781,0.0349 c -0.27,0 -0.22578,-0.0503 -0.22578,-0.0503 L 129.2,100.01843 c 0,-0.09 -0.26571,-0.587378 -0.54571,-0.587378 l -76.360574,0.01141"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-93"
+     class="st22"
+     d="m 247.61043,99.474686 -35.33256,-0.05829 c -0.28,0 -0.52787,-0.876395 -0.52787,-1.156395 l -0.22177,-60.403966 0.009,0.07394 -82.29249,0.319463 c 0,0 -0.0375,-0.0018 -0.0375,0.04554 L 129.2,98.41 c 0,0.27 -0.22,1.037155 -0.5,1.037155 l -76.46,0.02514"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path56-9"
+     class="st22"
+     d="m 247.6383,99.427535 -35.41415,0.0066 c -0.28,0 -0.52586,0.289807 -0.52586,0.569805 L 211.75,160.59 c 0,0.28 -0.21,0.79216 -0.49,0.79216 l -81.46,-0.05 c -0.27,0 -0.5,-0.51216 -0.5,-0.79216 l -0.1,-60.643996 c 0,-0.27 -0.26167,-0.490123 -0.54167,-0.490123 l -76.469328,0.04228"
+     inkscape:label="path57"
+     sodipodi:nodetypes="cccccccccc" />
   <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <path
+     id="path20"
+     class="st23"
+     d="M 252.6892,99.229734 468.49,98.983101 V 119.5831 l 57.10564,-0.0268"
+     sodipodi:nodetypes="cccc" />
   <defs
      id="defs23">
     <style
@@ -296,13 +325,19 @@
          id="stop23" />
     </linearGradient>
   </defs>
+  <path
+     id="path19"
+     class="st23"
+     d="m 252.69,99.227654 215.7992,-0.256119 8e-4,-21.243881 57.10704,-0.2"
+     sodipodi:nodetypes="cccc"
+     style="fill:none" />
   <sodipodi:namedview
      id="namedview56"
      bordercolor="#cccccc"
      borderopacity="1"
      inkscape:current-layer="Layer_1"
-     inkscape:cx="290.23747"
-     inkscape:cy="126.64908"
+     inkscape:cx="68.149641"
+     inkscape:cy="112.17177"
      inkscape:deskcolor="#d1d1d1"
      inkscape:pagecheckerboard="0"
      inkscape:pageopacity="1"
@@ -312,7 +347,7 @@
      inkscape:window-width="3184"
      inkscape:window-x="1196"
      inkscape:window-y="25"
-     inkscape:zoom="3.79"
+     inkscape:zoom="2.3624482"
      pagecolor="#ffffff" />
   <g
      id="g2"
@@ -376,353 +411,322 @@
       </g>
     </g>
   </g>
-  <path
-     id="path56-9"
-     class="st22"
-     d="M247.69,98.67l-35.44.11c-.28,0-.5.22-.5.5v61.31c0,.28-.21.5-.49.5l-81.46-.05c-.27,0-.5-.22-.5-.5l-.1-61.41c0-.27-.22-.5-.5-.5l-76.46-.24"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-91"
-     class="st22"
-     d="M247.69,99.01l-35.44.03c-.28,0-.5.07-.5.16v19.8c0,.09-.21.16-.49.16l-81.46-.02c-.27,0-.5-.07-.5-.16l-.1-19.83c0-.09-.22-.16-.5-.16l-76.46-.08"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-92"
-     class="st22"
-     d="M247.69,99.05l-35.44-.03c-.28,0-.5-.07-.5-.16v-19.8c0-.09-.21-.16-.49-.16l-81.46.02c-.27,0-.5.07-.5.16l-.1,19.83c0,.09-.22.16-.5.16l-76.46.08"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path56-93"
-     class="st22"
-     d="M247.69,98.87l-35.44-.11c-.28,0-.5-.22-.5-.5v-61.31c0-.28-.21-.5-.49-.5l-81.46.05c-.27,0-.5.22-.5.5l-.1,61.41c0,.27-.22.5-.5.5l-76.46.24"
-     inkscape:label="path57"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     id="path20"
-     class="st23"
-     d="M252.49,98.65h216v20.6l59.6.2"
-     sodipodi:nodetypes="cccc" />
-  <path
-     id="path19"
-     class="st23"
-     d="M252.69,99.05h215.6l.2-21.5,56.2-.2"
-     sodipodi:nodetypes="cccc" />
   <g
      id="text155"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text242"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g29"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(270.36 131.25)"
            id="text29"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan29"
-             style="stroke:none;fill:#e6e6e6">Survivor</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Survivor</tspan></text>
       </g>
     </g>
     <g
        id="text243"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g30"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st1"
            transform="translate(277.76 145.65)"
            id="text30"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan30"
-             style="stroke:none;fill:#e6e6e6">Merge</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Merge</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text173"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text247"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g31"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(156.67 20.59)"
            id="text31"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan31"
-             style="stroke:none;fill:#e6e6e6">Delly</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Delly</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text173-7"
+     class="st6"
+     style="isolation:isolate;fill:#fafafa;fill-opacity:1"
+     transform="translate(286.87591,147.91095)">
+    <g
+       id="text247-9"
+       class="st6"
+       style="isolation:isolate;fill:#fafafa;fill-opacity:1">
+      <g
+         class="st6"
+         id="g31-3"
+         style="isolation:isolate;fill:#fafafa;fill-opacity:1"
+         transform="translate(0.52770451,-22)">
+        <text
+           class="st9"
+           transform="translate(156.67,20.59)"
+           id="text31-8"
+           style="font-weight:600;font-size:12px;font-family:MavenPro-SemiBold, 'Maven Pro';isolation:isolate;fill:#fafafa;fill-opacity:1"><tspan
+             x="0"
+             y="0"
+             id="tspan31-0"
+             style="fill:#fafafa;fill-opacity:1">DrawSVs</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text174"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text248"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g32"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(153.26 62.29)"
            id="text32"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan32"
-             style="stroke:none;fill:#e6e6e6">Gridss</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Gridss</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text175"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text249"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g33"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(153.59 186.83)"
            id="text33"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan33"
-             style="stroke:none;fill:#e6e6e6">Svaba</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Svaba</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text176"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text250"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g34"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(153.12 145.46)"
            id="text34"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan34"
-             style="stroke:none;fill:#e6e6e6">Manta</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Manta</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text180"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text251"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g35"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(324.27 64.39)"
            id="text35"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan35"
-             style="stroke:none;fill:#e6e6e6">ReCall</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">ReCall</tspan></text>
       </g>
     </g>
     <g
        id="text252"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g36"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st1"
            transform="translate(325.37 78.79)"
            id="text36"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan36"
-             style="stroke:none;fill:#e6e6e6">Gridss</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Gridss</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="text184"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text253"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g37"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(361.49 131.25)"
            id="text37"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan37"
-             style="stroke:none;fill:#e6e6e6">Survivor</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Survivor</tspan></text>
       </g>
     </g>
     <g
        id="text254"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g38"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st1"
            transform="translate(363.79 145.65)"
            id="text38"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan38"
-             style="stroke:none;fill:#e6e6e6">Filtering</tspan></text>
-      </g>
-    </g>
-  </g>
-  <g
-     id="text185"
-     class="st6"
-     style="stroke:none;fill:#e6e6e6">
-    <g
-       id="text255"
-       class="st6"
-       style="stroke:none;fill:#e6e6e6">
-      <g
-         class="st6"
-         id="g39"
-         style="stroke:none;fill:#e6e6e6">
-        <text
-           class="st2"
-           transform="translate(444.23 148.85)"
-           id="text39"
-           style="stroke:none;fill:#e6e6e6"><tspan
-             x="0"
-             y="0"
-             id="tspan39"
-             style="stroke:none;fill:#e6e6e6">DrawSVs</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Filtering</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="g257"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text256"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g40"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
            transform="translate(223.47 64.39)"
            id="text40"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan40"
-             style="stroke:none;fill:#e6e6e6">Standarize</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Standarize</tspan></text>
       </g>
     </g>
     <g
        id="text257"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g41"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st1"
            transform="translate(241.07 78.79)"
            id="text41"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan41"
-             style="stroke:none;fill:#e6e6e6">Calls</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">Calls</tspan></text>
       </g>
     </g>
   </g>
   <g
      id="g259"
      class="st6"
-     style="stroke:none;fill:#e6e6e6">
+     transform="translate(0,-2)"
+     style="fill:#fafafa;fill-opacity:1">
     <g
        id="text258"
        class="st6"
-       style="stroke:none;fill:#e6e6e6">
+       style="fill:#fafafa;fill-opacity:1">
       <g
          class="st6"
          id="g42"
-         style="stroke:none;fill:#e6e6e6">
+         style="fill:#fafafa;fill-opacity:1">
         <text
            class="st9"
-           transform="translate(394.41 72.81)"
+           transform="translate(394.41,72.81)"
            id="text42"
-           style="stroke:none;fill:#e6e6e6"><tspan
+           style="fill:#fafafa;fill-opacity:1"><tspan
              x="0"
              y="0"
              id="tspan42"
-             style="stroke:none;fill:#e6e6e6">iAnnotateSV</tspan></text>
+             style="fill:#fafafa;fill-opacity:1">iAnnotateSV</tspan></text>
       </g>
     </g>
   </g>
@@ -768,89 +772,73 @@
   <path
      class="st13"
      d="M234.59,226.6l-.99.08-3.06,10.69c.34-.02.8.13.96-.23l3.1-10.53h-.01Z"
-     id="path45"
-     style="fill:#b3b3b3" />
+     id="path45" />
   <path
      class="st13"
      d="M274.44,226.6c-.38.03-.91-.16-1.1.23l-3.1,10.53.99-.08,3.2-10.68h.01Z"
-     id="path46"
-     style="fill:#b3b3b3" />
+     id="path46" />
   <path
      class="st13"
      d="M243.26,229.95v4.4c0,1.01,2.02,1.69,2.85,1.2l.09-.85c-.41.2-1.68-.22-1.68-.63v-4.12h1.68v-.98h-1.68l-.08-1.26h-1.18v1.26h-.84v.98h.84,0Z"
-     id="path47"
-     style="fill:#b3b3b3" />
+     id="path47" />
   <path
      class="st13"
      d="M240.59,228.98c-1.45-.36-4.03-.33-3.91,1.74s3.14,1.85,3.16,3.08c.03,1.41-2.41.89-3.16.35-.23,1.29.35,1.42,1.48,1.52,1.32.12,2.95-.42,2.94-1.99-.02-2.1-3.04-2.03-3.17-2.97-.18-1.35,1.87-.94,2.66-.62v-1.11h0Z"
-     id="path48"
-     style="fill:#b3b3b3" />
+     id="path48" />
   <path
      class="st13"
      d="M251.32,229.72c-1.06-1.15-2.89-1.11-4.22-.47-.12.32-.16.76.14.98,2.46-1.34,4.24.79,3.35,3.22-.59,1.62-2.06,1.34-3.42.98v1.12c1.33.13,2.52.36,3.73-.39,1.68-1.05,1.67-4.07.41-5.43h0Z"
-     id="path49"
-     style="fill:#b3b3b3" />
+     id="path49" />
   <path
      class="st13"
      d="M258.78,228.97v6.57h1.26v-4.4c0-.32,1.29-1.22,1.67-1.27.35-.05.98.21.98.57v5.1h1.26v-4.26c0-.45,1.35-1.34,1.81-1.41.38-.06.98.42.98.71v4.96h1.26v-5.24c0-.17-.35-.88-.5-1.04-.87-.9-3.05-.42-3.42.83-.34-.16-.35-.58-.62-.84-.93-.88-2.76-.37-3.36.7l-.07-.98h-1.26,0Z"
-     id="path50"
-     style="fill:#b3b3b3" />
+     id="path50" />
   <polygon
      class="st13"
      points="256.54 228.97 253.88 228.97 255.21 231.63 256.54 228.97"
-     id="polygon50"
-     style="fill:#b3b3b3" />
+     id="polygon50" />
   <polygon
      class="st13"
      points="256.54 235.55 255.21 232.89 253.88 235.55 256.54 235.55"
-     id="polygon51"
-     style="fill:#b3b3b3" />
+     id="polygon51" />
   <path
      class="st13"
      d="M258.78,228.97h1.26l.07.98c.6-1.07,2.43-1.59,3.36-.7.27.26.28.68.62.84.36-1.25,2.54-1.72,3.42-.83.15.16.5.86.5,1.04v5.24h-1.26v-4.96c0-.29-.6-.77-.98-.71-.46.07-1.81.96-1.81,1.41v4.26h-1.26v-5.1c0-.36-.63-.62-.98-.57-.38.05-1.67.95-1.67,1.27v4.4h-1.26v-6.57h0Z"
-     id="path51"
-     style="fill:#b3b3b3" />
+     id="path51" />
   <path
      class="st13"
      d="M240.59,228.98v1.11c-.78-.32-2.84-.73-2.65.62.13.94,3.15.87,3.17,2.97.02,1.57-1.62,2.1-2.94,1.99-1.13-.1-1.71-.23-1.48-1.52.74.54,3.19,1.06,3.16-.35-.03-1.23-3.04-1.03-3.16-3.08s2.46-2.09,3.91-1.74h-.01Z"
-     id="path52"
-     style="fill:#b3b3b3" />
+     id="path52" />
   <path
      class="st13"
      d="M251.6,229.72c1.26,1.36,1.26,4.39-.41,5.43-1.21.76-2.4.52-3.73.39v-1.12c1.36.36,2.83.64,3.42-.98.89-2.43-.9-4.55-3.35-3.22-.3-.22-.26-.66-.14-.98,1.33-.63,3.16-.68,4.22.47h0Z"
-     id="path53"
-     style="fill:#b3b3b3" />
+     id="path53" />
   <path
      class="st13"
      d="M243.26,229.95h-.84v-.98h.84v-1.26h1.18l.08,1.26h1.68v.98h-1.68v4.12c0,.41,1.27.83,1.68.63l-.09.85c-.83.49-2.85-.19-2.85-1.2v-4.4h0Z"
-     id="path54"
-     style="fill:#b3b3b3" />
+     id="path54" />
   <path
      class="st13"
      d="M274.44,226.6l-3.2,10.68-.99.08,3.1-10.53c.19-.39.72-.2,1.1-.23h-.01Z"
-     id="path55"
-     style="fill:#b3b3b3" />
+     id="path55" />
   <path
      class="st13"
      d="M234.59,226.6l-3.1,10.53c-.16.36-.62.22-.96.23l3.06-10.69.99-.08h.01Z"
-     id="path56"
-     style="fill:#b3b3b3" />
+     id="path56" />
   <polygon
      class="st13"
      points="256.54 228.97 255.21 231.63 253.88 228.97 256.54 228.97"
-     id="polygon56"
-     style="fill:#b3b3b3" />
+     id="polygon56" />
   <polygon
      class="st13"
      points="256.54 235.55 253.88 235.55 255.21 232.89 256.54 235.55"
-     id="polygon57"
-     style="fill:#b3b3b3" />
+     id="polygon57" />
   <circle
      id="circle56-93"
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -871,7 +859,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -892,7 +880,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -913,7 +901,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -934,7 +922,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"
@@ -955,7 +943,7 @@
      cx="0.0099999998"
      cy="-0.63"
      r="3.0999999"
-     style="fill:#cccccc">
+     style="fill:#b59292;fill-opacity:1">
     <animateMotion
        accumulate="none"
        additive="replace"

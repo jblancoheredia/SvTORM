@@ -1,4 +1,4 @@
-process BAM_MATCH {
+process BAM_PAIRED {
     tag "$meta.id"
     label 'process_low'
 
@@ -19,7 +19,9 @@ process BAM_MATCH {
 
     script:
     """
-    if [ \$({ samtools view -H ${bam} -@ ${task.cpus} ; samtools view ${bam} -@ ${task.cpus} | head -n 1000; } | samtools view -c -f 1  -@ ${task.cpus} ) -gt 0 ]; then
+    BAM=\$(ls *.bam)
+
+    if [ \$(samtools view \$BAM -@ ${task.cpus} | head -n 1000 | awk '{ if(and(\$2, 1)) count++ } END { print count+0 }') -gt 0 ]; then
         echo false > is_singleend.txt
     else
         echo true > is_singleend.txt

@@ -1,18 +1,18 @@
 process GRIDSS {
-    tag "$meta.id"
+    tag "$meta_tumour.patient_id"
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://drgiovianco/gridss:2.13.2':
-        'drgiovianco/gridss:2.13.2' }"
+        'docker://blancojmskcc/gridss:2.13.2':
+        'blancojmskcc/gridss:2.13.2' }"
 
     input:
-    tuple val(meta) , path(tbam), path(tbai)
-    tuple val(meta1), path(fasta)
-    tuple val(meta2), path(fasta_fai)
-    path(nbam)
-    path(nbai)
+    tuple val(patient_id), 
+          val(meta_normal), path(normal_bam), path(normal_bai),
+          val(meta_tumour), path(tumour_bam), path(tumour_bai)
+    tuple val(meta2), path(fasta)
+    tuple val(meta3), path(fasta_fai)
     path(bed)
     path(blocklist)
     path(bwa_index)
@@ -20,21 +20,21 @@ process GRIDSS {
 
     output:
     path "versions.yml",                                emit: versions
-    tuple val(meta), path("*.gridss.unfiltered.vcf"),   emit: vcf
+    tuple val(meta_tumour), path("*.gridss.unfiltered.vcf"),   emit: vcf
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta_tumour.patient_id}"
     def VERSION = '2.13.2' // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     def bwa = bwa_index ? "cp -s ${bwa_index}/* ." : ""
     """
-    samtools view -h -F 256 -o ${prefix}_N_filtered.bam ${nbam}
+    samtools view -h -F 256 -o ${prefix}_N_filtered.bam ${normal_bam}
     samtools index ${prefix}_N_filtered.bam
 
-    samtools view -h -F 256 -o ${prefix}_T_filtered.bam ${tbam}
+    samtools view -h -F 256 -o ${prefix}_T_filtered.bam ${tumour_bam}
     samtools index ${prefix}_T_filtered.bam
 
     rm ${fasta} ${fasta_fai}
@@ -78,7 +78,7 @@ process GRIDSS {
     END_VERSIONS
     """
     stub:
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta_tumour.patient_id}"
     def VERSION = '2.13.2' // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     touch ${prefix}.gridss.unfiltered.vcf
