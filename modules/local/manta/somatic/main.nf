@@ -73,7 +73,7 @@ process MANTA_SOMATIC {
     mv manta/results/stats/svLocusGraphStats.tsv \\
         ${prefix}.svLocusGraphStats.tsv
 
-    cp ${prefix}.somatic_sv.vcf.gz ${prefix}.manta.unfiltered.vcf.gz
+    cp ${prefix}.candidate_sv.vcf.gz ${prefix}.manta.unfiltered.vcf.gz
 
     gunzip ${prefix}.manta.unfiltered.vcf.gz
 

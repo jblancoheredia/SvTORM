@@ -32,6 +32,7 @@ process SURVIVOR_FILTER {
     """
     awk 'BEGIN {FS=OFS="\\t"} {for (i=1; i<=NF; i++) if (i != 11) printf "%s%s", \$i, (i==NF || i==10 ? "\\n" : OFS)}' delly.vcf > ${prefix}_DELLY__SV_FIL.vcf
     awk 'BEGIN {FS=OFS="\\t"} {for (i=1; i<=NF; i++) if (i != 10) printf "%s%s", \$i, (i == NF ? "\\n" : OFS)}' svaba.vcf > ${prefix}_SVABA__SV_FIL.vcf
+    sed -i 's#${prefix}_TUMOUR.bam#TUMOUR#g' ${prefix}_SVABA__SV_FIL.vcf
     awk 'BEGIN {FS=OFS="\\t"} {print}' manta.vcf  > ${prefix}_MANTA__SV_FIL.vcf
     awk 'BEGIN {FS=OFS="\\t"} {for (i=1; i<=NF; i++) if (i != 10) printf "%s%s", \$i, (i == NF ? "\\n" : OFS)}' gridss.vcf > ${prefix}_GRIDSS_SV_FIL.vcf
     awk 'BEGIN {FS=OFS="\\t"} {for (i=1; i<=NF; i++) if (i != 10) printf "%s%s", \$i, (i == NF ? "\\n" : OFS)}' recall.vcf > ${prefix}_RECALL_SV_FIL.vcf

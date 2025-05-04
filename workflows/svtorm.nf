@@ -28,6 +28,7 @@ include { BAM_PAIRED                                                            
 include { IANNOTATESV                                                                   } from '../modules/local/iannotatesv/main'
 include { MANTA_SOMATIC                                                                 } from '../modules/local/manta/somatic/main'
 include { SURVIVOR_MERGE                                                                } from '../modules/local/survivor/merge/main'
+include { SURVIVOR_STATS                                                                } from '../modules/local/survivor/stats/main'
 include { SURVIVOR_FILTER                                                               } from '../modules/local/survivor/filter/main'
 include { GATK4_BEDTOINTERVALLIST                                                       } from '../modules/nf-core/gatk4/bedtointervallist/main'
 include { PICARD_COLLECTMULTIPLEMETRICS                                                 } from '../modules/nf-core/picard/collectmultiplemetrics/main'
@@ -303,8 +304,7 @@ workflow SVTORM {
     //
     MANTA_SOMATIC(ch_bam_pairs, ch_targets_bed, ch_targets_bed_tbi, ch_fasta, ch_fai, [])
     ch_versions = ch_versions.mix(MANTA_SOMATIC.out.versions)
-    ch_manta_vcf = MANTA_SOMATIC.out.somatic_sv_vcf
-    ch_manta_vcf_tbi = MANTA_SOMATIC.out.somatic_sv_vcf_tbi
+    ch_manta_vcf = MANTA_SOMATIC.out.vcf
     ch_manta_candidate_small_indels_vcf = MANTA_SOMATIC.out.candidate_small_indels_vcf
     ch_manta_candidate_small_indels_vcf_tbi = MANTA_SOMATIC.out.candidate_small_indels_vcf_tbi
     ch_manta_vcf = ch_manta_vcf.map { meta, vcf -> tuple(meta.patient_id, meta, vcf) }
@@ -337,7 +337,7 @@ workflow SVTORM {
     //
     // MODULE: Run Survivor to merge Unfiltered VCFs
     //
-    SURVIVOR_MERGE(ch_vcf_merged, params.chromosomes, 1000, 2, 0, 0, 0, 1000)
+    SURVIVOR_MERGE(ch_vcf_merged, params.chromosomes, 1000, 2, 0, 0, 0, 30)
     ch_versions = ch_versions.mix(SURVIVOR_MERGE.out.versions)
     ch_merged_bed = SURVIVOR_MERGE.out.bed
     ch_merged_vcf = SURVIVOR_MERGE.out.vcf
@@ -394,19 +394,26 @@ workflow SVTORM {
     //
     // MODULE: Run Survivor to filter Unfiltered VCFs
     //
-    SURVIVOR_FILTER(ch_vcfs_merged, 10000, 3, 0, 0, 0, 1000)
+    SURVIVOR_FILTER(ch_vcfs_merged, 10000, 3, 1, 1, 0, 50)
     ch_versions = ch_versions.mix(SURVIVOR_FILTER.out.versions)
     ch_filtered_vcf = SURVIVOR_FILTER.out.filtered_vcf
     ch_filtered_tsv = SURVIVOR_FILTER.out.filtered_tsv
     ch_annote_input = SURVIVOR_FILTER.out.annote_input
 
-//    //
-//    // MODULE: Run iAnnotateSV 
-//    //
-//    IANNOTATESV(ch_filtered_vcf, ch_filtered_tsv, ch_annote_input)
-//    ch_versions = ch_versions.mix(IANNOTATESV.out.versions)
-//    ch_annotated_tsv = IANNOTATESV.out.tsv
-//
+    //
+    // MODULE: Run Survivor Stats
+    //
+    SURVIVOR_STATS(ch_filtered_vcf, -1, -1, -1)
+    ch_versions = ch_versions.mix(SURVIVOR_STATS.out.versions)
+    ch_reports  = ch_reports.mix(SURVIVOR_STATS.out.stats.collect{it[1]}.ifEmpty([]))
+
+    //
+    // MODULE: Run iAnnotateSV 
+    //
+    IANNOTATESV(ch_filtered_vcf, ch_filtered_tsv, ch_annote_input)
+    ch_versions = ch_versions.mix(IANNOTATESV.out.versions)
+    ch_annotated_tsv = IANNOTATESV.out.tsv
+
 //    //
 //    // MODULE: Run 
 //    //
