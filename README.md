@@ -23,17 +23,18 @@
 ## Pipeline Steps
 
 0. SVtorm starts with a couple of BAM files per sample, one for tumour and one for normal.
-1. Calling SVs
+1. Collect stats for the input BAM files ([`Picard`](https://github.com/broadinstitute/picard/blob/master/src/main/java/picard/analysis/CollectMultipleMetrics.java))
+2. Calling SVs
    - ([`Delly`](https://github.com/dellytools/delly))
    - ([`Svaba`](https://github.com/walaj/svaba))
    - ([`Manta`](https://github.com/Illumina/manta))
    - ([`Gridss`](https://github.com/PapenfussLab/gridss))
-2. Merging Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
-3. Bed to Interval list ([`GATK`](https://gatk.broadinstitute.org/hc/en-us/articles/360035531852-Intervals-and-interval-lists))
+3. Merging Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
 4. ReCalling ([`Gridss`](https://github.com/PapenfussLab/gridss))
-5. Filtering Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
-6. Annotate SVs ([`iAnnotateSV`](https://github.com/mskcc/iAnnotateSV))
-7. Draw SVs ([`DrawSV`](https://github.com/jblancoheredia/DrawSV))
+6. Filtering Calls ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
+6. SVs Stats ([`SURVIVOR`](https://github.com/fritzsedlazeck/SURVIVOR))
+7. Annotate SVs ([`iAnnotateSV`](https://github.com/mskcc/iAnnotateSV))
+8. Draw SVs ([`DrawSV`](https://github.com/jblancoheredia/DrawSV))
 8. Check for expected SVs in Controls 
 9. Present QC for raw reads ([`MultiQC`](http://multiqc.info/)) 
 
