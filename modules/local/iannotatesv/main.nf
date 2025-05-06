@@ -14,7 +14,8 @@ process IANNOTATESV {
 
     output:
     tuple val(meta), file("*_SOMTIC_SV_OUT.tsv"), emit: tsv
-    path "versions.yml"                           , emit: versions
+    tuple val(meta), file("*_SOMTIC_SV_ANN.tsv"), emit: ann
+    path "versions.yml"                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -30,7 +31,7 @@ process IANNOTATESV {
     -r hg19 \
     -d 3000
 
-    paste ${annote_input} ${prefix}_Annotated.txt > ${prefix}_SOMTIC_SV_ANN.tsv
+    paste ${filtered_tsv} ${prefix}_Annotated.txt > ${prefix}_SOMTIC_SV_ANN.tsv
 
     innput_file=\"${prefix}_SOMTIC_SV_ANN.tsv\"
     output_file=\"${prefix}_SOMTIC_SV_OUT.tsv\"

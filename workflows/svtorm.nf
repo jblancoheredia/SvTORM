@@ -32,7 +32,6 @@ include { SURVIVOR_STATS                                                        
 include { SURVIVOR_FILTER                                                               } from '../modules/local/survivor/filter/main'
 include { GATK4_BEDTOINTERVALLIST                                                       } from '../modules/nf-core/gatk4/bedtointervallist/main'
 include { PICARD_COLLECTMULTIPLEMETRICS                                                 } from '../modules/nf-core/picard/collectmultiplemetrics/main'
-include { VCF_ANNOTATE_ENSEMBLVEP_SNPEFF                                                } from '../subworkflows/nf-core/vcf_annotate_ensemblvep_snpeff/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -413,20 +412,15 @@ workflow SVTORM {
     IANNOTATESV(ch_filtered_vcf, ch_filtered_tsv, ch_annote_input)
     ch_versions = ch_versions.mix(IANNOTATESV.out.versions)
     ch_annotated_tsv = IANNOTATESV.out.tsv
+    ch_annotated_ann = IANNOTATESV.out.ann
 
-//    //
-//    // MODULE: Run 
-//    //
-//    VCF_ANNOTATE_ENSEMBLVEP_SNPEFF(ch_filtered_vcf, ch_fasta, )
-//    ch_versions = ch_versions.mix(VCF_ANNOTATE_ENSEMBLVEP_SNPEFF.out.versions)
-//
-//    //
-//    // MODULE: Run DrawSV
-//    //
-//    DRAWSV(ch_bam_pairs, ch_filtered_tsv, params.annotations, params.cytobands, params.protein_domains)
-//    ch_versions = ch_versions.mix(DRAWSV.out.versions)
-//    ch_drawsv_pdf = DRAWSV.out.pdf
-//    
+    //
+    // MODULE: Run DrawSV
+    //
+    DRAWSV(ch_bam_pairs, ch_annotated_ann, params.annotations, params.genome, params.cytobands, params.protein_domains)
+    ch_versions = ch_versions.mix(DRAWSV.out.versions)
+    ch_drawsv_pdf = DRAWSV.out.pdf
+
 //    //
 //    // MODULE: Run Check-Up and Clean-Up
 //    //
@@ -479,38 +473,6 @@ workflow SVTORM {
     multiqc_report = val_multiqc_report
     versions = ch_versions
 }
-//    }
-//
-//
-//
-//
-//    ch_multiqc_config                     = Channel.fromPath("$projectDir/assets/multiqc_config.yml", checkIfExists: true)
-//    ch_multiqc_custom_config              = params.multiqc_config ? Channel.fromPath(params.multiqc_config, checkIfExists: true) : Channel.empty()
-//    ch_multiqc_logo                       = params.multiqc_logo ? Channel.fromPath(params.multiqc_logo, checkIfExists: true) : Channel.empty()
-//    summary_params                        = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
-//    ch_workflow_summary                   = Channel.value(paramsSummaryMultiqc(summary_params))
-//    ch_multiqc_custom_methods_description = params.multiqc_methods_description ? file(params.multiqc_methods_description, checkIfExists: true) : file("$projectDir/assets/methods_description_template.yml", checkIfExists: true)
-//    ch_methods_description                = Channel.value(methodsDescriptionText(ch_multiqc_custom_methods_description))
-//    ch_multiqc_files                      = ch_multiqc_files.mix(ch_workflow_summary.collectFile(name: 'workflow_summary_mqc.yaml'))
-//    ch_multiqc_files                      = ch_multiqc_files.mix(ch_collated_versions)
-//    ch_multiqc_files                      = ch_multiqc_files.mix(ch_reports)
-//    ch_multiqc_files                      = ch_multiqc_files.mix(ch_methods_description.collectFile(name: 'methods_description_mqc.yaml', sort: true))
-//
-//    MULTIQC (
-//        ch_multiqc_files.collect(),
-//        ch_multiqc_config.toList(),
-//        ch_multiqc_custom_config.toList(),
-//        ch_multiqc_logo.toList(),
-//        [],
-//        []
-//    )
-//    multiqc_report = MULTIQC.out.report.toList()
-//
-//
-//    emit:
-//    multiqc_report // channel: /path/to/multiqc_report.html
-//    versions       // channel: [ path(versions.yml) ]
-//}
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
