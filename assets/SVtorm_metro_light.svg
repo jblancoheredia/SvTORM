@@ -3,7 +3,7 @@
    id="Layer_1"
    version="1.1"
    viewBox="0 0 600 250"
-   sodipodi:docname="SVtorm_metro_light copy.svg"
+   sodipodi:docname="SVtorm_metro_light.svg"
    inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -379,9 +379,9 @@
      id="namedview56"
      bordercolor="#cccccc"
      borderopacity="1"
-     inkscape:current-layer="Layer_1"
-     inkscape:cx="248.77485"
-     inkscape:cy="106.24759"
+     inkscape:current-layer="text1"
+     inkscape:cx="78.920053"
+     inkscape:cy="214.73322"
      inkscape:deskcolor="#d1d1d1"
      inkscape:pagecheckerboard="0"
      inkscape:pageopacity="1"
@@ -407,11 +407,12 @@
            class="st5">
           <text
              class="st2"
-             transform="translate(44.7 237.4)"
+             transform="translate(44.7,237.4)"
              id="text25"><tspan
                x="0"
                y="0"
-               id="tspan25">S</tspan></text>
+               id="tspan25"
+               style="fill:#224c4e;fill-opacity:1">S</tspan></text>
         </g>
         <g
            id="text24"
