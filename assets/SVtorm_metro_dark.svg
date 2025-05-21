@@ -11,17 +11,17 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <path
+     id="path19-9"
+     class="st25"
+     d="m 211.83347,99.506611 244.7801,-0.05726 21.52896,0.103745 41.11576,0.07165"
+     sodipodi:nodetypes="cccc"
+     style="fill:none;stroke:#c563a5;stroke-width:1.01827" />
+  <path
      id="path19"
      class="st25"
      d="M 252.7,99.2 474.3,98.7 474.2411,57.165642 532.72331,57.06012"
      sodipodi:nodetypes="cccc" />
   <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
-  <path
-     id="path19-9"
-     class="st25"
-     d="m 211.71731,99.651816 244.89626,-0.202465 21.52896,0.103745 41.11576,0.07165"
-     sodipodi:nodetypes="cccc"
-     style="fill:none;stroke:#c563a5;stroke-width:1.01827" />
   <defs
      id="defs25">
     <style
@@ -380,8 +380,8 @@
      bordercolor="#cccccc"
      borderopacity="1"
      inkscape:current-layer="Layer_1"
-     inkscape:cx="264.32764"
-     inkscape:cy="114.0484"
+     inkscape:cx="225.38746"
+     inkscape:cy="103.90882"
      inkscape:deskcolor="#d1d1d1"
      inkscape:pagecheckerboard="0"
      inkscape:pageopacity="1"
@@ -391,7 +391,7 @@
      inkscape:window-width="3184"
      inkscape:window-x="1196"
      inkscape:window-y="25"
-     inkscape:zoom="3.1740911"
+     inkscape:zoom="34.434036"
      pagecolor="#ffffff" />
   <g
      id="g2"
